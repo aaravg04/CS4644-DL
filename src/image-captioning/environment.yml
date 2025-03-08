@@ -223,7 +223,7 @@ dependencies:
       - datasets==2.9.0
       - diffusers==0.31.0
       - dill==0.3.6
-      - en-core-web-sm==3.7.1
+      #- en-core-web-sm==3.7.1
       - evaluate==0.4.3
       - fire==0.7.0
       - fuzzywuzzy==0.18.0

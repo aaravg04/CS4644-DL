@@ -15,7 +15,11 @@ class ViTCNNYOLO(nn.Module):
         self.cnn = EncoderCNN()
         self.vit_transform = transforms.Compose([transforms.Resize((224, 224))])
         yoloBig = YOLO("yolov8n.pt")
-        self.yolo = yoloBig.model.model[0:9] 
+        self.yolo = yoloBig.model.model[0:9]
+
+        # freezing pretrained model
+        for param in self.yolo.parameters():
+            param.requires_grad = False
 
     def forward(self, images):
         vit_features = self.vit(self.vit_transform(images))
@@ -23,8 +27,9 @@ class ViTCNNYOLO(nn.Module):
 
         # todo: check dims (or do we need to train a downscaling layer?)
         yolo_feats = self.yolo(images)
+        # (32,25600) 
         yolo_feats = yolo_feats.view(yolo_feats.size(0), -1)
-
+        #print(yolo_feats.shape
         concat_features = torch.cat((vit_features, cnn_features, yolo_feats), dim=1)
 
         return concat_features
@@ -39,7 +44,9 @@ class VITCNNYOLOAttentionModel(DecoderTransformer):
 
         self.fc_vit = torch.nn.Linear(1000, embed_size)
         self.fc_cnn = torch.nn.Linear(2048, embed_size)
-        self.fc_yolo = torch.nn.Linear(2048, embed_size)
+        self.fc_yolo = torch.nn.Linear(25600, embed_size)
+
+        self.fc_scale = torch.nn.Linear(3*embed_size, 2*embed_size)
 
         self.VIT_SPLIT = (1/3)
         self.CNN_SPLIT = (1/3)
@@ -59,17 +66,20 @@ class VITCNNYOLOAttentionModel(DecoderTransformer):
                 enc_output = images
             else:
                 enc_output = self.vit.forward(images) # shape: (batch_size, 8*64*64 + 2048)
-
+        
+        #print(enc_output.shape)
         vit_output = self.fc_vit(enc_output[:, :self.vit_out_size])
-        cnn_output = self.fc_cnn(enc_output[:, self.vit_out_size:self.cnn_out_size])
-        yolo_out = self.fc_yolo(enc_output[:, self.cnn_out_size:])
+        cnn_output = self.fc_cnn(enc_output[:, self.vit_out_size:(self.vit_out_size+self.cnn_out_size)])
+        yolo_out = self.fc_yolo(enc_output[:, (self.cnn_out_size+self.vit_out_size):])
 
         enc_output = torch.cat((vit_output, cnn_output, yolo_out), dim=1)
+        enc_output = self.fc_scale(enc_output)
         enc_output = self.dropout(enc_output)
         enc_output = self.batchnorm(enc_output)
         enc_output = enc_output.unsqueeze(1)
         enc_output = enc_output.reshape(enc_output.size(0), 2, -1)
-        
+        #print(enc_output.shape)
+        #print(captions.shape)
         return self.decoder_forward(enc_output, captions)
         
     def caption_images(self, images, vocabulary, mode="precomputed", max_length=40):
@@ -82,8 +92,11 @@ class VITCNNYOLOAttentionModel(DecoderTransformer):
                 enc_output = self.vit.forward(images)
                 
             vit_output = self.fc_vit(enc_output[:, :self.vit_out_size])
-            cnn_output = self.fc_cnn(enc_output[:, self.vit_out_size:])
-            enc_output = torch.cat((vit_output, cnn_output), dim=1)
+            cnn_output = self.fc_cnn(enc_output[:, self.vit_out_size:(self.vit_out_size+self.cnn_out_size)])
+            yolo_out = self.fc_yolo(enc_output[:, (self.cnn_out_size+self.vit_out_size):])
+
+            enc_output = torch.cat((vit_output, cnn_output, yolo_out), dim=1)
+            enc_output = self.fc_scale(enc_output)
             enc_output = self.dropout(enc_output)
             enc_output = self.batchnorm(enc_output)
             enc_output = enc_output.unsqueeze(1)
@@ -104,8 +117,11 @@ class VITCNNYOLOAttentionModel(DecoderTransformer):
                 enc_output = self.vit.forward(images)
 
             vit_output = self.fc_vit(enc_output[:, :self.vit_out_size])
-            cnn_output = self.fc_cnn(enc_output[:, self.vit_out_size:])
-            enc_output = torch.cat((vit_output, cnn_output), dim=1)
+            cnn_output = self.fc_cnn(enc_output[:, self.vit_out_size:(self.vit_out_size+self.cnn_out_size)])
+            yolo_out = self.fc_yolo(enc_output[:, (self.cnn_out_size+self.vit_out_size):])
+
+            enc_output = torch.cat((vit_output, cnn_output, yolo_out), dim=1)
+            enc_output = self.fc_scale(enc_output)
             enc_output = self.dropout(enc_output)
             enc_output = self.batchnorm(enc_output)
             enc_output = enc_output.unsqueeze(1)

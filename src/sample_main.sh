@@ -4,7 +4,7 @@
 #SBATCH -N1 --gres=gpu:RTX_6000:1                       # Number of nodes and GPUs required
 #SBATCH --mem-per-gpu=12G                           # Memory per gpu
 #SBATCH -oReport-%j.out                             # Combined output and error messages file
-#SBATCH -t480 # time
+#SBATCH -t480 # time (minutes; 480min = 8hrs walltime, unsure if that's amx)
 #SBATCH --mail-type=BEGIN,END,FAIL                  # Mail preferences
 #SBATCH --mail-user=<gt_username>@gatech.edu            # e-mail address for notifications
 

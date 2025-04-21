@@ -9,6 +9,8 @@ import pickle
 import sys
 import argparse
 
+import wandb
+
 from torch.utils.tensorboard import SummaryWriter
 from accelerate import Accelerator
 from utils import save_checkpoint, load_checkpoint, transform
@@ -165,6 +167,21 @@ def train(
     
     if os.path.exists(f'./checkpoints/{model_arch}/{dataset}/{saved_name}'):
         exit(f"Model {model_arch}, {saved_name}, dataset {dataset} already trained")
+
+    run = wandb.init(
+        # Set the wandb entity where your project will be logged (generally your team name).
+        entity="aaravgupta04",
+        # Set the wandb project where this run will be logged.
+        project="dl-stackmodel",
+        # Track hyperparameters and run metadata.
+        config={
+            "learning_rate": learning_rate,
+            "batchsize": batch_size,
+            "architecture": model_arch,
+            "dataset": dataset,
+            "epochs": num_epochs,
+        },
+    )
         
     train_loader, val_loader, _, train_dataset, _, _ = get_loader(
         transform=transform,
@@ -277,6 +294,12 @@ def train(
             writer.add_scalar("Training loss", train_loss, global_step=epoch)
             
             print(f"[Training] loss: {train_loss:.4f}")
+            run.log(
+                {
+                    "trainloss": train_loss, 
+                    "epoch": epoch
+                }
+            )
 
         # Evaluation
         if (epoch + 1) % eval_every == 0:
@@ -328,6 +351,15 @@ def train(
                 
                 print("Greedy:")
                 print(f"BLEU: {val_bleu_score_greedy:.4f} | METEOR: {val_meteor_score_greedy:.4f} | CIDEr: {val_cider_score_greedy:.4f}")
+
+                run.log(
+                    {
+                        "bleu-greedy": val_bleu_score_greedy, 
+                        "meteor-greedy": val_meteor_score_greedy,
+                        "cider-greedy": val_cider_score_greedy,
+                        "epoch": epoch
+                    }
+                )
             
             all_caption_tokens = []
             with torch.no_grad():
@@ -371,6 +403,14 @@ def train(
 
                 print("beam:")
                 print(f"BLEU: {val_bleu_score_beam:.4f} | METEOR: {val_meteor_score_beam:.4f} | CIDEr: {val_cider_score_beam:.4f}")
+                run.log(
+                    {
+                        "bleu-beam": val_bleu_score_beam, 
+                        "meteor-beam": val_meteor_score_beam,
+                        "cider-beam": val_cider_score_beam,
+                        "epoch": epoch
+                    }
+                )
                 
                 
         scheduler.step()

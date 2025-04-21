@@ -17,9 +17,9 @@ training:
   beam_width: 4
   # save and load checkpoints
   save_model: true
-  load_model: false
+  load_model: true
   save_every: 25
-  checkpoint_dir: '/home/hice1/agupta965/scratch/stacked/flickr/bs128_lr0.001_es512_nl4/checkpoint_epoch_100.pth.tar'
+  checkpoint_dir: '/storage/ice1/0/7/agupta965/stacked/flickr/bs128_lr0.001_es512_nl4/checkpoint_epoch_75.pth.tar'
 # specify the model hyperparameters
 vitcnn_attn_model:
   embed_size: 512

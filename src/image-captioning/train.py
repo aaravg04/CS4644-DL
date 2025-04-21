@@ -186,7 +186,10 @@ def train(
 
     model = get_model(model_config, vocab_size, device)
     print("Model initialized")
-    
+    print(model) # print config
+    print(f"{sum(p.numel() for p in model.parameters())} total params")
+    print(f"{sum(p.numel() for p in model.parameters() if p.requires_grad)} trainable params")
+
     if mode == 'precomputed' and not os.path.exists(f'precomputed/{model_arch}/{dataset}'):
         image_train_loader, image_val_loader, image_test_loader, _, _, _ = get_loader(
             transform=transform,
@@ -212,9 +215,9 @@ def train(
 
     # Initialize SummaryWriter only on the main process
     if accelerator.is_main_process:
-        if not os.path.exists(f"runs/{model_arch}/{dataset}/{saved_name}"):
-            os.makedirs(f"runs/{model_arch}/{dataset}/{saved_name}")
-        writer = SummaryWriter(f"runs/{model_arch}/{dataset}/{saved_name}")
+        if not os.path.exists(f"/storage/ice1/0/7/agupta965/runs/{model_arch}/{dataset}/{saved_name}"):
+            os.makedirs(f"/storage/ice1/0/7/agupta965/runs/{model_arch}/{dataset}/{saved_name}")
+        writer = SummaryWriter(f"/storage/ice1/0/7/agupta965/runs/{model_arch}/{dataset}/{saved_name}")
     else:
         writer = None
     step = 0
@@ -380,9 +383,10 @@ def train(
                     "optimizer": optimizer.state_dict(),
                     "step": step,
                 }
-                if not os.path.exists(f"./checkpoints/{model_arch}/{dataset}/{saved_name}"):
-                    os.makedirs(f"./checkpoints/{model_arch}/{dataset}/{saved_name}")
-                filename = f"./checkpoints/{model_arch}/{dataset}/{saved_name}/checkpoint_epoch_{epoch + 1}.pth.tar"
+                # pointing to checkpoints in scratch
+                if not os.path.exists(f"/storage/ice1/0/7/agupta965/checkpoints/{model_arch}/{dataset}/{saved_name}"):
+                    os.makedirs(f"/storage/ice1/0/7/agupta965/checkpoints/{model_arch}/{dataset}/{saved_name}")
+                filename = f"/storage/ice1/0/7/agupta965/checkpoints/{model_arch}/{dataset}/{saved_name}/checkpoint_epoch_{epoch + 1}.pth.tar"
                 save_checkpoint(checkpoint, filename)
 
                 metrics = {
@@ -396,9 +400,9 @@ def train(
                 }
 
                 # Save metrics to a JSON file
-                if not os.path.exists(f'./metric_logs/{model_arch}/{dataset}/{saved_name}'):
-                    os.makedirs(f'./metric_logs/{model_arch}/{dataset}/{saved_name}')
-                metrics_file_path = f'./metric_logs/{model_arch}/{dataset}/{saved_name}//train_val_to_epoch_{epoch+1}.json'
+                if not os.path.exists(f'/storage/ice1/0/7/agupta965/metric_logs/{model_arch}/{dataset}/{saved_name}'):
+                    os.makedirs(f'/storage/ice1/0/7/agupta965/metric_logs/{model_arch}/{dataset}/{saved_name}')
+                metrics_file_path = f'/storage/ice1/0/7/agupta965/metric_logs/{model_arch}/{dataset}/{saved_name}//train_val_to_epoch_{epoch+1}.json'
                 os.makedirs(os.path.dirname(metrics_file_path), exist_ok=True)
                 with open(metrics_file_path, 'w') as json_file:
                     json.dump(metrics, json_file, indent=4)

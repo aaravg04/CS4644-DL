@@ -1,0 +1,17 @@
+{"time":"2025-04-20T19:52:26.190623514-04:00","level":"INFO","msg":"stream: starting","core version":"0.19.9","symlink path":"/home/hice1/agupta965/ondemand/CS4644-DL/src/image-captioning/wandb/run-20250420_195226-d99ura0u/logs/debug-core.log"}
+{"time":"2025-04-20T19:52:26.435212137-04:00","level":"INFO","msg":"created new stream","id":"d99ura0u"}
+{"time":"2025-04-20T19:52:26.435238051-04:00","level":"INFO","msg":"stream: started","id":"d99ura0u"}
+{"time":"2025-04-20T19:52:26.435429901-04:00","level":"INFO","msg":"handler: started","stream_id":"d99ura0u"}
+{"time":"2025-04-20T19:52:26.435442513-04:00","level":"INFO","msg":"writer: Do: started","stream_id":"d99ura0u"}
+{"time":"2025-04-20T19:52:26.435669409-04:00","level":"INFO","msg":"sender: started","stream_id":"d99ura0u"}
+{"time":"2025-04-20T19:52:26.47705154-04:00","level":"ERROR","msg":"HTTP error","status":403,"method":"POST","url":"https://api.wandb.ai/graphql"}
+{"time":"2025-04-20T19:52:26.47711276-04:00","level":"ERROR","msg":"sender: upsertRun:","error":"failed to upsert bucket: returned error 403: {\"data\":{\"upsertBucket\":null},\"errors\":[{\"message\":\"permission denied\",\"path\":[\"upsertBucket\"],\"extensions\":{\"code\":\"PERMISSION_ERROR\"}}]}"}
+{"time":"2025-04-20T19:52:27.479061715-04:00","level":"INFO","msg":"stream: closing","id":"d99ura0u"}
+{"time":"2025-04-20T19:52:27.479125198-04:00","level":"ERROR","msg":"sender: upsertConfig: RunRecord is nil"}
+{"time":"2025-04-20T19:52:27.561520403-04:00","level":"ERROR","msg":"HTTP error","status":404,"method":"POST","url":"https://api.wandb.ai/graphql"}
+{"time":"2025-04-20T19:52:27.5615713-04:00","level":"ERROR","msg":"runfiles: CreateRunFiles returned error: returned error 404: {\"data\":{\"createRunFiles\":null},\"errors\":[{\"message\":\"project my-awesome-team-name/dl-stackmodel not found during createRunFiles\",\"path\":[\"createRunFiles\"]}]}"}
+{"time":"2025-04-20T19:52:27.563207041-04:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-04-20T19:52:27.563229823-04:00","level":"INFO","msg":"handler: closed","stream_id":"d99ura0u"}
+{"time":"2025-04-20T19:52:27.563235068-04:00","level":"INFO","msg":"writer: Close: closed","stream_id":"d99ura0u"}
+{"time":"2025-04-20T19:52:27.563404685-04:00","level":"INFO","msg":"sender: closed","stream_id":"d99ura0u"}
+{"time":"2025-04-20T19:52:27.563746122-04:00","level":"INFO","msg":"stream: closed","id":"d99ura0u"}

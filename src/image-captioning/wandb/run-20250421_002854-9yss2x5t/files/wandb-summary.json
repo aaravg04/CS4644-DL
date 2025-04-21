@@ -1,0 +1,1 @@
+{"epoch":4,"cider-greedy":0.7665631670572844,"_wandb":{"runtime":4423},"bleu-greedy":0.24129695764598919,"_step":5,"_runtime":4400.381414048,"_timestamp":1.7452141351644332e+09,"trainloss":2.4954710404078164,"meteor-greedy":0.43287524116210596}

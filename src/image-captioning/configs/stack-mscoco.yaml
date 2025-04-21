@@ -7,7 +7,7 @@ training:
   eval_every: 5
   # dataset settings
   num_workers: 1
-  batch_size: 1024
+  batch_size: 512
   val_ratio: 0.1
   test_ratio: 0.05
   # model settings

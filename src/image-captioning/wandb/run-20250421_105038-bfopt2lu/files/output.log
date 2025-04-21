@@ -814,4 +814,4 @@ VITCNNYOLOAttentionModel(
 45427131 trainable params
 Starting training...
 [Epoch 1 / 100]
- 41%|████▏     | 67/162 [10:47<14:49,  9.37s/it]
+ 43%|████▎     | 70/162 [11:15<14:27,  9.43s/it]

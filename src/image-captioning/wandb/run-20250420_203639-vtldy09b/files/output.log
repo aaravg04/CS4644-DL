@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/home/hice1/agupta965/ondemand/CS4644-DL/src/image-captioning/train_wandb.py", line 529, in <module>
+    train(
+  File "/home/hice1/agupta965/ondemand/CS4644-DL/src/image-captioning/train_wandb.py", line 188, in train
+    train_loader, val_loader, _, train_dataset, _, _ = get_loader(
+  File "/home/hice1/agupta965/ondemand/CS4644-DL/src/image-captioning/get_loader.py", line 243, in get_loader
+    with open(train_caption_path) as f:
+FileNotFoundError: [Errno 2] No such file or directory: './dataset/mscoco/annotations/captions_train2014.json'

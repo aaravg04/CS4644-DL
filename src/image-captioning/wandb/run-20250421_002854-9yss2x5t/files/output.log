@@ -1,0 +1,985 @@
+Train size:  82783
+Val size:  36453
+Test size:  4051
+/home/hice1/agupta965/.conda/envs/SC4001/lib/python3.9/site-packages/torch/utils/data/dataloader.py:557: UserWarning: This DataLoader will create 2 worker processes in total. Our suggested max number of worker in current system is 1, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
+  warnings.warn(_create_warning_msg(
+Vocabulary size: 8843
+Using device: cuda
+Model initialized
+VITCNNYOLOAttentionModel(
+  (dropout): Dropout(p=0.1, inplace=False)
+  (decoder_layers): ModuleList(
+    (0-1): 2 x DecoderLayer(
+      (self_attn): MultiHeadAttention(
+        (W_q): Linear(in_features=512, out_features=512, bias=True)
+        (W_k): Linear(in_features=512, out_features=512, bias=True)
+        (W_v): Linear(in_features=512, out_features=512, bias=True)
+        (W_o): Linear(in_features=512, out_features=512, bias=True)
+      )
+      (cross_attn): MultiHeadAttention(
+        (W_q): Linear(in_features=512, out_features=512, bias=True)
+        (W_k): Linear(in_features=512, out_features=512, bias=True)
+        (W_v): Linear(in_features=512, out_features=512, bias=True)
+        (W_o): Linear(in_features=512, out_features=512, bias=True)
+      )
+      (feed_forward): PositionWiseFeedForward(
+        (fc1): Linear(in_features=512, out_features=512, bias=True)
+        (fc2): Linear(in_features=512, out_features=512, bias=True)
+        (relu): ReLU()
+      )
+      (norm1): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+      (norm2): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+      (norm3): LayerNorm((512,), eps=1e-05, elementwise_affine=True)
+      (dropout): Dropout(p=0.1, inplace=False)
+    )
+  )
+  (positional_encoding): PositionalEncoding()
+  (fc2): Linear(in_features=512, out_features=8843, bias=True)
+  (decoder_embedding): Embedding(8843, 512)
+  (vit): ViTCNNYOLO(
+    (vit): VisionTransformer(
+      (conv_proj): Conv2d(3, 768, kernel_size=(16, 16), stride=(16, 16))
+      (encoder): Encoder(
+        (dropout): Dropout(p=0.0, inplace=False)
+        (layers): Sequential(
+          (encoder_layer_0): EncoderBlock(
+            (ln_1): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+            (self_attention): MultiheadAttention(
+              (out_proj): NonDynamicallyQuantizableLinear(in_features=768, out_features=768, bias=True)
+            )
+            (dropout): Dropout(p=0.0, inplace=False)
+            (ln_2): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+            (mlp): MLPBlock(
+              (0): Linear(in_features=768, out_features=3072, bias=True)
+              (1): GELU(approximate='none')
+              (2): Dropout(p=0.0, inplace=False)
+              (3): Linear(in_features=3072, out_features=768, bias=True)
+              (4): Dropout(p=0.0, inplace=False)
+            )
+          )
+          (encoder_layer_1): EncoderBlock(
+            (ln_1): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+            (self_attention): MultiheadAttention(
+              (out_proj): NonDynamicallyQuantizableLinear(in_features=768, out_features=768, bias=True)
+            )
+            (dropout): Dropout(p=0.0, inplace=False)
+            (ln_2): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+            (mlp): MLPBlock(
+              (0): Linear(in_features=768, out_features=3072, bias=True)
+              (1): GELU(approximate='none')
+              (2): Dropout(p=0.0, inplace=False)
+              (3): Linear(in_features=3072, out_features=768, bias=True)
+              (4): Dropout(p=0.0, inplace=False)
+            )
+          )
+          (encoder_layer_2): EncoderBlock(
+            (ln_1): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+            (self_attention): MultiheadAttention(
+              (out_proj): NonDynamicallyQuantizableLinear(in_features=768, out_features=768, bias=True)
+            )
+            (dropout): Dropout(p=0.0, inplace=False)
+            (ln_2): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+            (mlp): MLPBlock(
+              (0): Linear(in_features=768, out_features=3072, bias=True)
+              (1): GELU(approximate='none')
+              (2): Dropout(p=0.0, inplace=False)
+              (3): Linear(in_features=3072, out_features=768, bias=True)
+              (4): Dropout(p=0.0, inplace=False)
+            )
+          )
+          (encoder_layer_3): EncoderBlock(
+            (ln_1): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+            (self_attention): MultiheadAttention(
+              (out_proj): NonDynamicallyQuantizableLinear(in_features=768, out_features=768, bias=True)
+            )
+            (dropout): Dropout(p=0.0, inplace=False)
+            (ln_2): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+            (mlp): MLPBlock(
+              (0): Linear(in_features=768, out_features=3072, bias=True)
+              (1): GELU(approximate='none')
+              (2): Dropout(p=0.0, inplace=False)
+              (3): Linear(in_features=3072, out_features=768, bias=True)
+              (4): Dropout(p=0.0, inplace=False)
+            )
+          )
+          (encoder_layer_4): EncoderBlock(
+            (ln_1): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+            (self_attention): MultiheadAttention(
+              (out_proj): NonDynamicallyQuantizableLinear(in_features=768, out_features=768, bias=True)
+            )
+            (dropout): Dropout(p=0.0, inplace=False)
+            (ln_2): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+            (mlp): MLPBlock(
+              (0): Linear(in_features=768, out_features=3072, bias=True)
+              (1): GELU(approximate='none')
+              (2): Dropout(p=0.0, inplace=False)
+              (3): Linear(in_features=3072, out_features=768, bias=True)
+              (4): Dropout(p=0.0, inplace=False)
+            )
+          )
+          (encoder_layer_5): EncoderBlock(
+            (ln_1): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+            (self_attention): MultiheadAttention(
+              (out_proj): NonDynamicallyQuantizableLinear(in_features=768, out_features=768, bias=True)
+            )
+            (dropout): Dropout(p=0.0, inplace=False)
+            (ln_2): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+            (mlp): MLPBlock(
+              (0): Linear(in_features=768, out_features=3072, bias=True)
+              (1): GELU(approximate='none')
+              (2): Dropout(p=0.0, inplace=False)
+              (3): Linear(in_features=3072, out_features=768, bias=True)
+              (4): Dropout(p=0.0, inplace=False)
+            )
+          )
+          (encoder_layer_6): EncoderBlock(
+            (ln_1): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+            (self_attention): MultiheadAttention(
+              (out_proj): NonDynamicallyQuantizableLinear(in_features=768, out_features=768, bias=True)
+            )
+            (dropout): Dropout(p=0.0, inplace=False)
+            (ln_2): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+            (mlp): MLPBlock(
+              (0): Linear(in_features=768, out_features=3072, bias=True)
+              (1): GELU(approximate='none')
+              (2): Dropout(p=0.0, inplace=False)
+              (3): Linear(in_features=3072, out_features=768, bias=True)
+              (4): Dropout(p=0.0, inplace=False)
+            )
+          )
+          (encoder_layer_7): EncoderBlock(
+            (ln_1): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+            (self_attention): MultiheadAttention(
+              (out_proj): NonDynamicallyQuantizableLinear(in_features=768, out_features=768, bias=True)
+            )
+            (dropout): Dropout(p=0.0, inplace=False)
+            (ln_2): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+            (mlp): MLPBlock(
+              (0): Linear(in_features=768, out_features=3072, bias=True)
+              (1): GELU(approximate='none')
+              (2): Dropout(p=0.0, inplace=False)
+              (3): Linear(in_features=3072, out_features=768, bias=True)
+              (4): Dropout(p=0.0, inplace=False)
+            )
+          )
+          (encoder_layer_8): EncoderBlock(
+            (ln_1): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+            (self_attention): MultiheadAttention(
+              (out_proj): NonDynamicallyQuantizableLinear(in_features=768, out_features=768, bias=True)
+            )
+            (dropout): Dropout(p=0.0, inplace=False)
+            (ln_2): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+            (mlp): MLPBlock(
+              (0): Linear(in_features=768, out_features=3072, bias=True)
+              (1): GELU(approximate='none')
+              (2): Dropout(p=0.0, inplace=False)
+              (3): Linear(in_features=3072, out_features=768, bias=True)
+              (4): Dropout(p=0.0, inplace=False)
+            )
+          )
+          (encoder_layer_9): EncoderBlock(
+            (ln_1): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+            (self_attention): MultiheadAttention(
+              (out_proj): NonDynamicallyQuantizableLinear(in_features=768, out_features=768, bias=True)
+            )
+            (dropout): Dropout(p=0.0, inplace=False)
+            (ln_2): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+            (mlp): MLPBlock(
+              (0): Linear(in_features=768, out_features=3072, bias=True)
+              (1): GELU(approximate='none')
+              (2): Dropout(p=0.0, inplace=False)
+              (3): Linear(in_features=3072, out_features=768, bias=True)
+              (4): Dropout(p=0.0, inplace=False)
+            )
+          )
+          (encoder_layer_10): EncoderBlock(
+            (ln_1): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+            (self_attention): MultiheadAttention(
+              (out_proj): NonDynamicallyQuantizableLinear(in_features=768, out_features=768, bias=True)
+            )
+            (dropout): Dropout(p=0.0, inplace=False)
+            (ln_2): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+            (mlp): MLPBlock(
+              (0): Linear(in_features=768, out_features=3072, bias=True)
+              (1): GELU(approximate='none')
+              (2): Dropout(p=0.0, inplace=False)
+              (3): Linear(in_features=3072, out_features=768, bias=True)
+              (4): Dropout(p=0.0, inplace=False)
+            )
+          )
+          (encoder_layer_11): EncoderBlock(
+            (ln_1): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+            (self_attention): MultiheadAttention(
+              (out_proj): NonDynamicallyQuantizableLinear(in_features=768, out_features=768, bias=True)
+            )
+            (dropout): Dropout(p=0.0, inplace=False)
+            (ln_2): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+            (mlp): MLPBlock(
+              (0): Linear(in_features=768, out_features=3072, bias=True)
+              (1): GELU(approximate='none')
+              (2): Dropout(p=0.0, inplace=False)
+              (3): Linear(in_features=3072, out_features=768, bias=True)
+              (4): Dropout(p=0.0, inplace=False)
+            )
+          )
+        )
+        (ln): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+      )
+      (heads): Sequential(
+        (head): Linear(in_features=768, out_features=1000, bias=True)
+      )
+      (head): Identity()
+    )
+    (cnn): EncoderCNN(
+      (inception): Inception3(
+        (Conv2d_1a_3x3): BasicConv2d(
+          (conv): Conv2d(3, 32, kernel_size=(3, 3), stride=(2, 2), bias=False)
+          (bn): BatchNorm2d(32, eps=0.001, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (Conv2d_2a_3x3): BasicConv2d(
+          (conv): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), bias=False)
+          (bn): BatchNorm2d(32, eps=0.001, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (Conv2d_2b_3x3): BasicConv2d(
+          (conv): Conv2d(32, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (bn): BatchNorm2d(64, eps=0.001, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (maxpool1): MaxPool2d(kernel_size=3, stride=2, padding=0, dilation=1, ceil_mode=False)
+        (Conv2d_3b_1x1): BasicConv2d(
+          (conv): Conv2d(64, 80, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (bn): BatchNorm2d(80, eps=0.001, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (Conv2d_4a_3x3): BasicConv2d(
+          (conv): Conv2d(80, 192, kernel_size=(3, 3), stride=(1, 1), bias=False)
+          (bn): BatchNorm2d(192, eps=0.001, momentum=0.1, affine=True, track_running_stats=True)
+        )
+        (maxpool2): MaxPool2d(kernel_size=3, stride=2, padding=0, dilation=1, ceil_mode=False)
+        (Mixed_5b): InceptionA(
+          (branch1x1): BasicConv2d(
+            (conv): Conv2d(192, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (bn): BatchNorm2d(64, eps=0.001, momentum=0.1, affine=True, track_running_stats=True)
+          )
+          (branch5x5_1): BasicConv2d(
+            (conv): Conv2d(192, 48, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (bn): BatchNorm2d(48, eps=0.001, momentum=0.1, affine=True, track_running_stats=True)
+          )
+          (branch5x5_2): BasicConv2d(
+            (conv): Conv2d(48, 64, kernel_size=(5, 5), stride=(1, 1), padding=(2, 2), bias=False)
+            (bn): BatchNorm2d(64, eps=0.001, momentum=0.1, affine=True, track_running_stats=True)
+          )
+          (branch3x3dbl_1): BasicConv2d(
+            (conv): Conv2d(192, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (bn): BatchNorm2d(64, eps=0.001, momentum=0.1, affine=True, track_running_stats=True)
+          )
+          (branch3x3dbl_2): BasicConv2d(
+            (conv): Conv2d(64, 96, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+            (bn): BatchNorm2d(96, eps=0.001, momentum=0.1, affine=True, track_running_stats=True)
+          )
+          (branch3x3dbl_3): BasicConv2d(
+            (conv): Conv2d(96, 96, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+            (bn): BatchNorm2d(96, eps=0.001, momentum=0.1, affine=True, track_running_stats=True)
+          )
+          (branch_pool): BasicConv2d(
+            (conv): Conv2d(192, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (bn): BatchNorm2d(32, eps=0.001, momentum=0.1, affine=True, track_running_stats=True)
+          )
+        )
+        (Mixed_5c): InceptionA(
+          (branch1x1): BasicConv2d(
+            (conv): Conv2d(256, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (bn): BatchNorm2d(64, eps=0.001, momentum=0.1, affine=True, track_running_stats=True)
+          )
+          (branch5x5_1): BasicConv2d(
+            (conv): Conv2d(256, 48, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (bn): BatchNorm2d(48, eps=0.001, momentum=0.1, affine=True, track_running_stats=True)
+          )
+          (branch5x5_2): BasicConv2d(
+            (conv): Conv2d(48, 64, kernel_size=(5, 5), stride=(1, 1), padding=(2, 2), bias=False)
+            (bn): BatchNorm2d(64, eps=0.001, momentum=0.1, affine=True, track_running_stats=True)
+          )
+          (branch3x3dbl_1): BasicConv2d(
+            (conv): Conv2d(256, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (bn): BatchNorm2d(64, eps=0.001, momentum=0.1, affine=True, track_running_stats=True)
+          )
+          (branch3x3dbl_2): BasicConv2d(
+            (conv): Conv2d(64, 96, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+            (bn): BatchNorm2d(96, eps=0.001, momentum=0.1, affine=True, track_running_stats=True)
+          )
+          (branch3x3dbl_3): BasicConv2d(
+            (conv): Conv2d(96, 96, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+            (bn): BatchNorm2d(96, eps=0.001, momentum=0.1, affine=True, track_running_stats=True)
+          )
+          (branch_pool): BasicConv2d(
+            (conv): Conv2d(256, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (bn): BatchNorm2d(64, eps=0.001, momentum=0.1, affine=True, track_running_stats=True)
+          )
+        )
+        (Mixed_5d): InceptionA(
+          (branch1x1): BasicConv2d(
+            (conv): Conv2d(288, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (bn): BatchNorm2d(64, eps=0.001, momentum=0.1, affine=True, track_running_stats=True)
+          )
+          (branch5x5_1): BasicConv2d(
+            (conv): Conv2d(288, 48, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (bn): BatchNorm2d(48, eps=0.001, momentum=0.1, affine=True, track_running_stats=True)
+          )
+          (branch5x5_2): BasicConv2d(
+            (conv): Conv2d(48, 64, kernel_size=(5, 5), stride=(1, 1), padding=(2, 2), bias=False)
+            (bn): BatchNorm2d(64, eps=0.001, momentum=0.1, affine=True, track_running_stats=True)
+          )
+          (branch3x3dbl_1): BasicConv2d(
+            (conv): Conv2d(288, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (bn): BatchNorm2d(64, eps=0.001, momentum=0.1, affine=True, track_running_stats=True)
+          )
+          (branch3x3dbl_2): BasicConv2d(
+            (conv): Conv2d(64, 96, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+            (bn): BatchNorm2d(96, eps=0.001, momentum=0.1, affine=True, track_running_stats=True)
+          )
+          (branch3x3dbl_3): BasicConv2d(
+            (conv): Conv2d(96, 96, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+            (bn): BatchNorm2d(96, eps=0.001, momentum=0.1, affine=True, track_running_stats=True)
+          )
+          (branch_pool): BasicConv2d(
+            (conv): Conv2d(288, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (bn): BatchNorm2d(64, eps=0.001, momentum=0.1, affine=True, track_running_stats=True)
+          )
+        )
+        (Mixed_6a): InceptionB(
+          (branch3x3): BasicConv2d(
+            (conv): Conv2d(288, 384, kernel_size=(3, 3), stride=(2, 2), bias=False)
+            (bn): BatchNorm2d(384, eps=0.001, momentum=0.1, affine=True, track_running_stats=True)
+          )
+          (branch3x3dbl_1): BasicConv2d(
+            (conv): Conv2d(288, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (bn): BatchNorm2d(64, eps=0.001, momentum=0.1, affine=True, track_running_stats=True)
+          )
+          (branch3x3dbl_2): BasicConv2d(
+            (conv): Conv2d(64, 96, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+            (bn): BatchNorm2d(96, eps=0.001, momentum=0.1, affine=True, track_running_stats=True)
+          )
+          (branch3x3dbl_3): BasicConv2d(
+            (conv): Conv2d(96, 96, kernel_size=(3, 3), stride=(2, 2), bias=False)
+            (bn): BatchNorm2d(96, eps=0.001, momentum=0.1, affine=True, track_running_stats=True)
+          )
+        )
+        (Mixed_6b): InceptionC(
+          (branch1x1): BasicConv2d(
+            (conv): Conv2d(768, 192, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (bn): BatchNorm2d(192, eps=0.001, momentum=0.1, affine=True, track_running_stats=True)
+          )
+          (branch7x7_1): BasicConv2d(
+            (conv): Conv2d(768, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (bn): BatchNorm2d(128, eps=0.001, momentum=0.1, affine=True, track_running_stats=True)
+          )
+          (branch7x7_2): BasicConv2d(
+            (conv): Conv2d(128, 128, kernel_size=(1, 7), stride=(1, 1), padding=(0, 3), bias=False)
+            (bn): BatchNorm2d(128, eps=0.001, momentum=0.1, affine=True, track_running_stats=True)
+          )
+          (branch7x7_3): BasicConv2d(
+            (conv): Conv2d(128, 192, kernel_size=(7, 1), stride=(1, 1), padding=(3, 0), bias=False)
+            (bn): BatchNorm2d(192, eps=0.001, momentum=0.1, affine=True, track_running_stats=True)
+          )
+          (branch7x7dbl_1): BasicConv2d(
+            (conv): Conv2d(768, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (bn): BatchNorm2d(128, eps=0.001, momentum=0.1, affine=True, track_running_stats=True)
+          )
+          (branch7x7dbl_2): BasicConv2d(
+            (conv): Conv2d(128, 128, kernel_size=(7, 1), stride=(1, 1), padding=(3, 0), bias=False)
+            (bn): BatchNorm2d(128, eps=0.001, momentum=0.1, affine=True, track_running_stats=True)
+          )
+          (branch7x7dbl_3): BasicConv2d(
+            (conv): Conv2d(128, 128, kernel_size=(1, 7), stride=(1, 1), padding=(0, 3), bias=False)
+            (bn): BatchNorm2d(128, eps=0.001, momentum=0.1, affine=True, track_running_stats=True)
+          )
+          (branch7x7dbl_4): BasicConv2d(
+            (conv): Conv2d(128, 128, kernel_size=(7, 1), stride=(1, 1), padding=(3, 0), bias=False)
+            (bn): BatchNorm2d(128, eps=0.001, momentum=0.1, affine=True, track_running_stats=True)
+          )
+          (branch7x7dbl_5): BasicConv2d(
+            (conv): Conv2d(128, 192, kernel_size=(1, 7), stride=(1, 1), padding=(0, 3), bias=False)
+            (bn): BatchNorm2d(192, eps=0.001, momentum=0.1, affine=True, track_running_stats=True)
+          )
+          (branch_pool): BasicConv2d(
+            (conv): Conv2d(768, 192, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (bn): BatchNorm2d(192, eps=0.001, momentum=0.1, affine=True, track_running_stats=True)
+          )
+        )
+        (Mixed_6c): InceptionC(
+          (branch1x1): BasicConv2d(
+            (conv): Conv2d(768, 192, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (bn): BatchNorm2d(192, eps=0.001, momentum=0.1, affine=True, track_running_stats=True)
+          )
+          (branch7x7_1): BasicConv2d(
+            (conv): Conv2d(768, 160, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (bn): BatchNorm2d(160, eps=0.001, momentum=0.1, affine=True, track_running_stats=True)
+          )
+          (branch7x7_2): BasicConv2d(
+            (conv): Conv2d(160, 160, kernel_size=(1, 7), stride=(1, 1), padding=(0, 3), bias=False)
+            (bn): BatchNorm2d(160, eps=0.001, momentum=0.1, affine=True, track_running_stats=True)
+          )
+          (branch7x7_3): BasicConv2d(
+            (conv): Conv2d(160, 192, kernel_size=(7, 1), stride=(1, 1), padding=(3, 0), bias=False)
+            (bn): BatchNorm2d(192, eps=0.001, momentum=0.1, affine=True, track_running_stats=True)
+          )
+          (branch7x7dbl_1): BasicConv2d(
+            (conv): Conv2d(768, 160, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (bn): BatchNorm2d(160, eps=0.001, momentum=0.1, affine=True, track_running_stats=True)
+          )
+          (branch7x7dbl_2): BasicConv2d(
+            (conv): Conv2d(160, 160, kernel_size=(7, 1), stride=(1, 1), padding=(3, 0), bias=False)
+            (bn): BatchNorm2d(160, eps=0.001, momentum=0.1, affine=True, track_running_stats=True)
+          )
+          (branch7x7dbl_3): BasicConv2d(
+            (conv): Conv2d(160, 160, kernel_size=(1, 7), stride=(1, 1), padding=(0, 3), bias=False)
+            (bn): BatchNorm2d(160, eps=0.001, momentum=0.1, affine=True, track_running_stats=True)
+          )
+          (branch7x7dbl_4): BasicConv2d(
+            (conv): Conv2d(160, 160, kernel_size=(7, 1), stride=(1, 1), padding=(3, 0), bias=False)
+            (bn): BatchNorm2d(160, eps=0.001, momentum=0.1, affine=True, track_running_stats=True)
+          )
+          (branch7x7dbl_5): BasicConv2d(
+            (conv): Conv2d(160, 192, kernel_size=(1, 7), stride=(1, 1), padding=(0, 3), bias=False)
+            (bn): BatchNorm2d(192, eps=0.001, momentum=0.1, affine=True, track_running_stats=True)
+          )
+          (branch_pool): BasicConv2d(
+            (conv): Conv2d(768, 192, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (bn): BatchNorm2d(192, eps=0.001, momentum=0.1, affine=True, track_running_stats=True)
+          )
+        )
+        (Mixed_6d): InceptionC(
+          (branch1x1): BasicConv2d(
+            (conv): Conv2d(768, 192, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (bn): BatchNorm2d(192, eps=0.001, momentum=0.1, affine=True, track_running_stats=True)
+          )
+          (branch7x7_1): BasicConv2d(
+            (conv): Conv2d(768, 160, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (bn): BatchNorm2d(160, eps=0.001, momentum=0.1, affine=True, track_running_stats=True)
+          )
+          (branch7x7_2): BasicConv2d(
+            (conv): Conv2d(160, 160, kernel_size=(1, 7), stride=(1, 1), padding=(0, 3), bias=False)
+            (bn): BatchNorm2d(160, eps=0.001, momentum=0.1, affine=True, track_running_stats=True)
+          )
+          (branch7x7_3): BasicConv2d(
+            (conv): Conv2d(160, 192, kernel_size=(7, 1), stride=(1, 1), padding=(3, 0), bias=False)
+            (bn): BatchNorm2d(192, eps=0.001, momentum=0.1, affine=True, track_running_stats=True)
+          )
+          (branch7x7dbl_1): BasicConv2d(
+            (conv): Conv2d(768, 160, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (bn): BatchNorm2d(160, eps=0.001, momentum=0.1, affine=True, track_running_stats=True)
+          )
+          (branch7x7dbl_2): BasicConv2d(
+            (conv): Conv2d(160, 160, kernel_size=(7, 1), stride=(1, 1), padding=(3, 0), bias=False)
+            (bn): BatchNorm2d(160, eps=0.001, momentum=0.1, affine=True, track_running_stats=True)
+          )
+          (branch7x7dbl_3): BasicConv2d(
+            (conv): Conv2d(160, 160, kernel_size=(1, 7), stride=(1, 1), padding=(0, 3), bias=False)
+            (bn): BatchNorm2d(160, eps=0.001, momentum=0.1, affine=True, track_running_stats=True)
+          )
+          (branch7x7dbl_4): BasicConv2d(
+            (conv): Conv2d(160, 160, kernel_size=(7, 1), stride=(1, 1), padding=(3, 0), bias=False)
+            (bn): BatchNorm2d(160, eps=0.001, momentum=0.1, affine=True, track_running_stats=True)
+          )
+          (branch7x7dbl_5): BasicConv2d(
+            (conv): Conv2d(160, 192, kernel_size=(1, 7), stride=(1, 1), padding=(0, 3), bias=False)
+            (bn): BatchNorm2d(192, eps=0.001, momentum=0.1, affine=True, track_running_stats=True)
+          )
+          (branch_pool): BasicConv2d(
+            (conv): Conv2d(768, 192, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (bn): BatchNorm2d(192, eps=0.001, momentum=0.1, affine=True, track_running_stats=True)
+          )
+        )
+        (Mixed_6e): InceptionC(
+          (branch1x1): BasicConv2d(
+            (conv): Conv2d(768, 192, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (bn): BatchNorm2d(192, eps=0.001, momentum=0.1, affine=True, track_running_stats=True)
+          )
+          (branch7x7_1): BasicConv2d(
+            (conv): Conv2d(768, 192, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (bn): BatchNorm2d(192, eps=0.001, momentum=0.1, affine=True, track_running_stats=True)
+          )
+          (branch7x7_2): BasicConv2d(
+            (conv): Conv2d(192, 192, kernel_size=(1, 7), stride=(1, 1), padding=(0, 3), bias=False)
+            (bn): BatchNorm2d(192, eps=0.001, momentum=0.1, affine=True, track_running_stats=True)
+          )
+          (branch7x7_3): BasicConv2d(
+            (conv): Conv2d(192, 192, kernel_size=(7, 1), stride=(1, 1), padding=(3, 0), bias=False)
+            (bn): BatchNorm2d(192, eps=0.001, momentum=0.1, affine=True, track_running_stats=True)
+          )
+          (branch7x7dbl_1): BasicConv2d(
+            (conv): Conv2d(768, 192, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (bn): BatchNorm2d(192, eps=0.001, momentum=0.1, affine=True, track_running_stats=True)
+          )
+          (branch7x7dbl_2): BasicConv2d(
+            (conv): Conv2d(192, 192, kernel_size=(7, 1), stride=(1, 1), padding=(3, 0), bias=False)
+            (bn): BatchNorm2d(192, eps=0.001, momentum=0.1, affine=True, track_running_stats=True)
+          )
+          (branch7x7dbl_3): BasicConv2d(
+            (conv): Conv2d(192, 192, kernel_size=(1, 7), stride=(1, 1), padding=(0, 3), bias=False)
+            (bn): BatchNorm2d(192, eps=0.001, momentum=0.1, affine=True, track_running_stats=True)
+          )
+          (branch7x7dbl_4): BasicConv2d(
+            (conv): Conv2d(192, 192, kernel_size=(7, 1), stride=(1, 1), padding=(3, 0), bias=False)
+            (bn): BatchNorm2d(192, eps=0.001, momentum=0.1, affine=True, track_running_stats=True)
+          )
+          (branch7x7dbl_5): BasicConv2d(
+            (conv): Conv2d(192, 192, kernel_size=(1, 7), stride=(1, 1), padding=(0, 3), bias=False)
+            (bn): BatchNorm2d(192, eps=0.001, momentum=0.1, affine=True, track_running_stats=True)
+          )
+          (branch_pool): BasicConv2d(
+            (conv): Conv2d(768, 192, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (bn): BatchNorm2d(192, eps=0.001, momentum=0.1, affine=True, track_running_stats=True)
+          )
+        )
+        (AuxLogits): InceptionAux(
+          (conv0): BasicConv2d(
+            (conv): Conv2d(768, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (bn): BatchNorm2d(128, eps=0.001, momentum=0.1, affine=True, track_running_stats=True)
+          )
+          (conv1): BasicConv2d(
+            (conv): Conv2d(128, 768, kernel_size=(5, 5), stride=(1, 1), bias=False)
+            (bn): BatchNorm2d(768, eps=0.001, momentum=0.1, affine=True, track_running_stats=True)
+          )
+          (fc): Linear(in_features=768, out_features=1000, bias=True)
+        )
+        (Mixed_7a): InceptionD(
+          (branch3x3_1): BasicConv2d(
+            (conv): Conv2d(768, 192, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (bn): BatchNorm2d(192, eps=0.001, momentum=0.1, affine=True, track_running_stats=True)
+          )
+          (branch3x3_2): BasicConv2d(
+            (conv): Conv2d(192, 320, kernel_size=(3, 3), stride=(2, 2), bias=False)
+            (bn): BatchNorm2d(320, eps=0.001, momentum=0.1, affine=True, track_running_stats=True)
+          )
+          (branch7x7x3_1): BasicConv2d(
+            (conv): Conv2d(768, 192, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (bn): BatchNorm2d(192, eps=0.001, momentum=0.1, affine=True, track_running_stats=True)
+          )
+          (branch7x7x3_2): BasicConv2d(
+            (conv): Conv2d(192, 192, kernel_size=(1, 7), stride=(1, 1), padding=(0, 3), bias=False)
+            (bn): BatchNorm2d(192, eps=0.001, momentum=0.1, affine=True, track_running_stats=True)
+          )
+          (branch7x7x3_3): BasicConv2d(
+            (conv): Conv2d(192, 192, kernel_size=(7, 1), stride=(1, 1), padding=(3, 0), bias=False)
+            (bn): BatchNorm2d(192, eps=0.001, momentum=0.1, affine=True, track_running_stats=True)
+          )
+          (branch7x7x3_4): BasicConv2d(
+            (conv): Conv2d(192, 192, kernel_size=(3, 3), stride=(2, 2), bias=False)
+            (bn): BatchNorm2d(192, eps=0.001, momentum=0.1, affine=True, track_running_stats=True)
+          )
+        )
+        (Mixed_7b): InceptionE(
+          (branch1x1): BasicConv2d(
+            (conv): Conv2d(1280, 320, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (bn): BatchNorm2d(320, eps=0.001, momentum=0.1, affine=True, track_running_stats=True)
+          )
+          (branch3x3_1): BasicConv2d(
+            (conv): Conv2d(1280, 384, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (bn): BatchNorm2d(384, eps=0.001, momentum=0.1, affine=True, track_running_stats=True)
+          )
+          (branch3x3_2a): BasicConv2d(
+            (conv): Conv2d(384, 384, kernel_size=(1, 3), stride=(1, 1), padding=(0, 1), bias=False)
+            (bn): BatchNorm2d(384, eps=0.001, momentum=0.1, affine=True, track_running_stats=True)
+          )
+          (branch3x3_2b): BasicConv2d(
+            (conv): Conv2d(384, 384, kernel_size=(3, 1), stride=(1, 1), padding=(1, 0), bias=False)
+            (bn): BatchNorm2d(384, eps=0.001, momentum=0.1, affine=True, track_running_stats=True)
+          )
+          (branch3x3dbl_1): BasicConv2d(
+            (conv): Conv2d(1280, 448, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (bn): BatchNorm2d(448, eps=0.001, momentum=0.1, affine=True, track_running_stats=True)
+          )
+          (branch3x3dbl_2): BasicConv2d(
+            (conv): Conv2d(448, 384, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+            (bn): BatchNorm2d(384, eps=0.001, momentum=0.1, affine=True, track_running_stats=True)
+          )
+          (branch3x3dbl_3a): BasicConv2d(
+            (conv): Conv2d(384, 384, kernel_size=(1, 3), stride=(1, 1), padding=(0, 1), bias=False)
+            (bn): BatchNorm2d(384, eps=0.001, momentum=0.1, affine=True, track_running_stats=True)
+          )
+          (branch3x3dbl_3b): BasicConv2d(
+            (conv): Conv2d(384, 384, kernel_size=(3, 1), stride=(1, 1), padding=(1, 0), bias=False)
+            (bn): BatchNorm2d(384, eps=0.001, momentum=0.1, affine=True, track_running_stats=True)
+          )
+          (branch_pool): BasicConv2d(
+            (conv): Conv2d(1280, 192, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (bn): BatchNorm2d(192, eps=0.001, momentum=0.1, affine=True, track_running_stats=True)
+          )
+        )
+        (Mixed_7c): InceptionE(
+          (branch1x1): BasicConv2d(
+            (conv): Conv2d(2048, 320, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (bn): BatchNorm2d(320, eps=0.001, momentum=0.1, affine=True, track_running_stats=True)
+          )
+          (branch3x3_1): BasicConv2d(
+            (conv): Conv2d(2048, 384, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (bn): BatchNorm2d(384, eps=0.001, momentum=0.1, affine=True, track_running_stats=True)
+          )
+          (branch3x3_2a): BasicConv2d(
+            (conv): Conv2d(384, 384, kernel_size=(1, 3), stride=(1, 1), padding=(0, 1), bias=False)
+            (bn): BatchNorm2d(384, eps=0.001, momentum=0.1, affine=True, track_running_stats=True)
+          )
+          (branch3x3_2b): BasicConv2d(
+            (conv): Conv2d(384, 384, kernel_size=(3, 1), stride=(1, 1), padding=(1, 0), bias=False)
+            (bn): BatchNorm2d(384, eps=0.001, momentum=0.1, affine=True, track_running_stats=True)
+          )
+          (branch3x3dbl_1): BasicConv2d(
+            (conv): Conv2d(2048, 448, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (bn): BatchNorm2d(448, eps=0.001, momentum=0.1, affine=True, track_running_stats=True)
+          )
+          (branch3x3dbl_2): BasicConv2d(
+            (conv): Conv2d(448, 384, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+            (bn): BatchNorm2d(384, eps=0.001, momentum=0.1, affine=True, track_running_stats=True)
+          )
+          (branch3x3dbl_3a): BasicConv2d(
+            (conv): Conv2d(384, 384, kernel_size=(1, 3), stride=(1, 1), padding=(0, 1), bias=False)
+            (bn): BatchNorm2d(384, eps=0.001, momentum=0.1, affine=True, track_running_stats=True)
+          )
+          (branch3x3dbl_3b): BasicConv2d(
+            (conv): Conv2d(384, 384, kernel_size=(3, 1), stride=(1, 1), padding=(1, 0), bias=False)
+            (bn): BatchNorm2d(384, eps=0.001, momentum=0.1, affine=True, track_running_stats=True)
+          )
+          (branch_pool): BasicConv2d(
+            (conv): Conv2d(2048, 192, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (bn): BatchNorm2d(192, eps=0.001, momentum=0.1, affine=True, track_running_stats=True)
+          )
+        )
+        (avgpool): AdaptiveAvgPool2d(output_size=(1, 1))
+        (dropout): Dropout(p=0.5, inplace=False)
+        (fc): Linear(in_features=2048, out_features=1000, bias=True)
+      )
+      (pool): AdaptiveAvgPool2d(output_size=(1, 1))
+    )
+    (yolo): Sequential(
+      (0): Conv(
+        (conv): Conv2d(3, 16, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+        (bn): BatchNorm2d(16, eps=0.001, momentum=0.03, affine=True, track_running_stats=True)
+        (act): SiLU(inplace=True)
+      )
+      (1): Conv(
+        (conv): Conv2d(16, 32, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+        (bn): BatchNorm2d(32, eps=0.001, momentum=0.03, affine=True, track_running_stats=True)
+        (act): SiLU(inplace=True)
+      )
+      (2): C2f(
+        (cv1): Conv(
+          (conv): Conv2d(32, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (bn): BatchNorm2d(32, eps=0.001, momentum=0.03, affine=True, track_running_stats=True)
+          (act): SiLU(inplace=True)
+        )
+        (cv2): Conv(
+          (conv): Conv2d(48, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (bn): BatchNorm2d(32, eps=0.001, momentum=0.03, affine=True, track_running_stats=True)
+          (act): SiLU(inplace=True)
+        )
+        (m): ModuleList(
+          (0): Bottleneck(
+            (cv1): Conv(
+              (conv): Conv2d(16, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+              (bn): BatchNorm2d(16, eps=0.001, momentum=0.03, affine=True, track_running_stats=True)
+              (act): SiLU(inplace=True)
+            )
+            (cv2): Conv(
+              (conv): Conv2d(16, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+              (bn): BatchNorm2d(16, eps=0.001, momentum=0.03, affine=True, track_running_stats=True)
+              (act): SiLU(inplace=True)
+            )
+          )
+        )
+      )
+      (3): Conv(
+        (conv): Conv2d(32, 64, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+        (bn): BatchNorm2d(64, eps=0.001, momentum=0.03, affine=True, track_running_stats=True)
+        (act): SiLU(inplace=True)
+      )
+      (4): C2f(
+        (cv1): Conv(
+          (conv): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (bn): BatchNorm2d(64, eps=0.001, momentum=0.03, affine=True, track_running_stats=True)
+          (act): SiLU(inplace=True)
+        )
+        (cv2): Conv(
+          (conv): Conv2d(128, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (bn): BatchNorm2d(64, eps=0.001, momentum=0.03, affine=True, track_running_stats=True)
+          (act): SiLU(inplace=True)
+        )
+        (m): ModuleList(
+          (0-1): 2 x Bottleneck(
+            (cv1): Conv(
+              (conv): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+              (bn): BatchNorm2d(32, eps=0.001, momentum=0.03, affine=True, track_running_stats=True)
+              (act): SiLU(inplace=True)
+            )
+            (cv2): Conv(
+              (conv): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+              (bn): BatchNorm2d(32, eps=0.001, momentum=0.03, affine=True, track_running_stats=True)
+              (act): SiLU(inplace=True)
+            )
+          )
+        )
+      )
+      (5): Conv(
+        (conv): Conv2d(64, 128, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+        (bn): BatchNorm2d(128, eps=0.001, momentum=0.03, affine=True, track_running_stats=True)
+        (act): SiLU(inplace=True)
+      )
+      (6): C2f(
+        (cv1): Conv(
+          (conv): Conv2d(128, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (bn): BatchNorm2d(128, eps=0.001, momentum=0.03, affine=True, track_running_stats=True)
+          (act): SiLU(inplace=True)
+        )
+        (cv2): Conv(
+          (conv): Conv2d(256, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (bn): BatchNorm2d(128, eps=0.001, momentum=0.03, affine=True, track_running_stats=True)
+          (act): SiLU(inplace=True)
+        )
+        (m): ModuleList(
+          (0-1): 2 x Bottleneck(
+            (cv1): Conv(
+              (conv): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+              (bn): BatchNorm2d(64, eps=0.001, momentum=0.03, affine=True, track_running_stats=True)
+              (act): SiLU(inplace=True)
+            )
+            (cv2): Conv(
+              (conv): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+              (bn): BatchNorm2d(64, eps=0.001, momentum=0.03, affine=True, track_running_stats=True)
+              (act): SiLU(inplace=True)
+            )
+          )
+        )
+      )
+      (7): Conv(
+        (conv): Conv2d(128, 256, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+        (bn): BatchNorm2d(256, eps=0.001, momentum=0.03, affine=True, track_running_stats=True)
+        (act): SiLU(inplace=True)
+      )
+      (8): C2f(
+        (cv1): Conv(
+          (conv): Conv2d(256, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (bn): BatchNorm2d(256, eps=0.001, momentum=0.03, affine=True, track_running_stats=True)
+          (act): SiLU(inplace=True)
+        )
+        (cv2): Conv(
+          (conv): Conv2d(384, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (bn): BatchNorm2d(256, eps=0.001, momentum=0.03, affine=True, track_running_stats=True)
+          (act): SiLU(inplace=True)
+        )
+        (m): ModuleList(
+          (0): Bottleneck(
+            (cv1): Conv(
+              (conv): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+              (bn): BatchNorm2d(128, eps=0.001, momentum=0.03, affine=True, track_running_stats=True)
+              (act): SiLU(inplace=True)
+            )
+            (cv2): Conv(
+              (conv): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+              (bn): BatchNorm2d(128, eps=0.001, momentum=0.03, affine=True, track_running_stats=True)
+              (act): SiLU(inplace=True)
+            )
+          )
+        )
+      )
+    )
+    (yolo_downsampler): YOLO2Embed(
+      (downsampler): Sequential(
+        (0): Conv2d(256, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+        (1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): ReLU(inplace=True)
+        (3): Conv2d(128, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+        (4): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (5): ReLU(inplace=True)
+        (6): AdaptiveAvgPool2d(output_size=1)
+        (7): Conv2d(64, 512, kernel_size=(1, 1), stride=(1, 1))
+        (8): Flatten(start_dim=1, end_dim=-1)
+      )
+    )
+  )
+  (fc_vit): Linear(in_features=1000, out_features=512, bias=True)
+  (fc_cnn): Linear(in_features=2048, out_features=512, bias=True)
+  (fc_scale): Linear(in_features=1536, out_features=1024, bias=True)
+  (yolo_downsampler): YOLO2Embed(
+    (downsampler): Sequential(
+      (0): Conv2d(256, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (2): ReLU(inplace=True)
+      (3): Conv2d(128, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (4): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (5): ReLU(inplace=True)
+      (6): AdaptiveAvgPool2d(output_size=1)
+      (7): Conv2d(64, 512, kernel_size=(1, 1), stride=(1, 1))
+      (8): Flatten(start_dim=1, end_dim=-1)
+    )
+  )
+  (batchnorm): BatchNorm1d(1024, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+)
+133102835 total params
+45427131 trainable params
+/home/hice1/agupta965/.conda/envs/SC4001/lib/python3.9/site-packages/torch/utils/data/dataloader.py:557: UserWarning: This DataLoader will create 2 worker processes in total. Our suggested max number of worker in current system is 1, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
+  warnings.warn(_create_warning_msg(
+Starting training...
+[Epoch 1 / 100]
+ 15%|█▌        | 11/72 [01:09<04:52,  4.80s/it]  
+[Training] loss: 3.5961
+[Epoch 2 / 100]
+[Training] loss: 2.8146
+[Epoch 3 / 100]
+[Training] loss: 2.6469
+[Epoch 4 / 100]
+[Training] loss: 2.5574
+[Epoch 5 / 100]
+[Training] loss: 2.4955
+Predicted (greedy): a bird is sitting on a rock in the water
+Target: ['a bird is standing on a rock by the water', 'there is a bird on the side of a tree', 'there is a bird standing next to a pond of water', 'a bird is perched on a log next to the water', 'a bird is sitting on a tree over green ferns']
+Predicted (greedy): a woman is standing next to an elephant
+Target: ['people ride an elephant through a path in the forest', 'three people are riding on a brown elephant', 'a large elephant with a couple people on the top', 'tourists under an umbrella on the back of an elephant', 'a group of people riding on the back of an elephant']
+Predicted (greedy): a man in a red shirt is playing tennis
+Target: ['a woman holding a tennis racquet on a  tennis court', 'a young female with tennis racket ready to strike the tennis ball', 'a tennis player is taking a swing on a red court', 'the woman is playing tennis on the court', 'a woman in a short skirt playing tennis']
+Predicted (greedy): a woman is standing in a field with a horse
+Target: ['a young child riding on the back of a brown horse', 'a little boy is riding on a horse and he looks back', 'a kid is riding a large horse outside', 'a young child is riding a brown horse', 'a young child riding a horse looking of their shoulder']
+Predicted (greedy): a baseball player is getting ready to swing at a pitch
+Target: ['a man sliding to the plate at a baseball game', 'a baseball player slides into the base as the opposing team waits for the ball', 'a man diving to a baseball bag on a field', 'player diving back to first base during a baseball game', 'a baseball player that is sliding to a base']
+Predicted (greedy): a black and white fire hydrant sitting on top of a wooden table
+Target: ['a room filled with two pieced of brown luggage and a mannequin wearing a shirt', 'an old trunk sits as a stand is in the foreground', 'model sitting in front of a leather suitcase in a storage area', 'an old dressmakers dummy stands next to a pair of old suitcases', 'vintage tailors mannequin and two old suitcases with luggage decals on them']
+Predicted (greedy): a woman is sitting on a bench with a dog
+Target: ['two dogs are wearing winter attire and staring off to the distance', 'two dogs in a snow covered park', 'two dogs sit in the park on a cold day', 'two dogs are covered in blankets and staring ahead', 'two dogs wearing jackets standing in a yard']
+Predicted (greedy): a red and black cat sitting on top of a wooden floor
+Target: ['a car parked outside of a gas station with chrome rims', 'a door is open to a black car with red rims', 'a room with a door open to the outside with a car outside the doorway', 'a view from a house looking outside at the front of a black car', 'a garage door leading out to a fancy car']
+Predicted (greedy): a bathroom with a sink and toilet in it
+Target: ['a white tub sitting next to a toilet in a bathroom', 'a bathroom with a toilet and a bath tub and wooden walls', 'a restroom with a bathtub and a toilet', 'there is a bath tub and a toilet in the bathroom', 'a bathtub that has a blue mat inside of it']
+Predicted (greedy): a man and a woman standing in the snow
+Target: ['two people riding skis on a snowy surface', 'two men who are standing on skis in the snow', 'two people are posing on snow with skis', 'two skiers smile as they stand on top of a mountain', 'two people standing at top of a ski slope with skis on']
+Predicted (greedy): a television screen is on a table with a remote
+Target: ['a smart phone with an image of a person on its screen', 'a stack of 3 computers and a cell phone', 'a stack containing three laptop computers and a smartphone', 'three laptops stacked on top of each other from largest to smallest with a cell phone on the top', 'a desk with three electronics stacked on each other']
+Predicted (greedy): a boat is sitting on the beach near water
+Target: ['a group of boats floating on a body of water next to shore', 'small boats sit on the shore of the ocean', 'a sunny day on the lake where four biats are tied up', 'a group of row boats floating just off the shore', 'the boats are standing alone in the water']
+Predicted (greedy): a woman sitting at a table with a laptop computer
+Target: ['a man and woman are looking at a computer screen', 'a man and a woman look at an apple computer', 'a man with glasses shows a woman sitting next to him something on his laptop', 'two people that are looking at a computer screen', 'man showing a woman something on his laptop']
+Predicted (greedy): a doll is sitting on a table with a teddy bear and a doll
+Target: ['a table with jewelry and a bear covered in various writing', 'a person sitting behind a table with a teddy bear cellphone and a couple of necklaces on it', 'the teddy bear and two boxed necklaces are on the table next to the cell phone', 'two boxes of jewelry sit in front of a signed stuffed animal', 'a teddy bear cellphone and two necklaces are sitting on a table']
+Predicted (greedy): a man and a woman playing baseball in a field
+Target: ['three young kids are playing with wiffle bats in the yard', 'two children who are playing with baseball bats', 'children playing wiffle ball in a back yard', 'a couple of kids are swinging bats outside', 'two kids swinging baseball bats while another one jumps back']
+Predicted (greedy): a bird stands on a rock near a body of water
+Target: ['a good stands in the grass next to the water', 'the brown duck has a long dark neck', 'a black grey and white duck on grass area by water', 'a bird that is standing on grass near water', 'a single goose standing on the bank of a lake']
+Predicted (greedy): a elephant is standing by a fence with its trunk
+Target: ['a actress standing near an elephant on a sunny day', 'an older woman is talking in front of an elephant', 'the woman is looking at the elephant in amazement', 'a woman standing behind a fence looking at an elephant', 'an old woman standing besides an elephant smiling']
+Predicted (greedy): a man stands in front of a building with a surfboard
+Target: ['a man flying through the air while riding a skateboard', 'a man performs a skateboard trick in front of parked cars', 'a teenager grinds his skateboard on a concrete rail', 'a man skateboarding on a concrete bench bear a row of parked cars', 'a man on a concrete barrier on a skateboard']
+Predicted (greedy): a man in a red shirt is playing frisbee
+Target: ['a man is playing frisbee by herself on the beach', 'a man on a beach swinging his arm to toss a frisbee', 'man on the beach throwing a white frisbee', 'this is a man throwing a disc on the beach', 'men playing frisbee in a sandy area by a tent']
+Predicted (greedy): a pile of different types of boxes of apples
+Target: ['a pile of containers filled with lots of apple juice', 'the stand is selling apples and apple cider outside', 'many various sized bottles of apple cider are on the table', 'a bunch of apples and cider for sale on a table', 'a farm stand selling apple cider and apples']
+Predicted (greedy): a plate of food with a side of meat and vegetables
+Target: ['a plate full of fried food and salad with a fork laying in it', 'a white plate topped with different types of food and cream', 'a white plate is covered in some kind of mexican food', 'a plate of food is seen in this picture', 'a fork that is on a plate with food']
+Predicted (greedy): a street sign on a pole with a street sign
+Target: ['a street sign sitting on top of a snow covered traffic lights', 'a group of street signs covered in snow in the city', 'an intersection with street signs with snow on them', 'a street scene with focus on a pole with lights and signs', 'many street signs in front of a building while it is snowing']
+Predicted (greedy): a small dog sitting on a chair with a blue and white hat
+Target: ['a black and white dog standing on top of a seat', 'a dog standing in a car and looking at something', 'a dog that is leaning on a set', 'an dog is taken in this very picture', 'a small dog sits up in a car seat']
+Predicted (greedy): a woman is standing in the dirt with a horse
+Target: ['a woman standing in front of a brown horse', 'a young woman in a leather coat about to pet a horse', 'a woman is standing next to a black and white horse', 'a woman is feeding a horse at a ranch', 'a woman going to touch a horse in a field']
+Predicted (greedy): a man and a woman playing a video game
+Target: ['there are two men playing the wii video game system', 'a family vigorously plays the wii in their living room', 'a small group of friends sit and watch while others play video games', 'two people standing playing nintendo wii while others wit on the couch', 'a group of people that are playing a game']
+Predicted (greedy): a giraffe standing next to a fence and a fence
+Target: ['a group of giraffes in a grassy area by fences', 'google giraffes next to each other inside a fenced in area', 'several giraffes linger near a large wooden building', 'a couple of giraffes are sitting in a pin', 'several giraffe sitting and standing in a fenced in area']
+Predicted (greedy): a boat is in the water near a body of water
+Target: ['a sunset behind a hill with a bay of boats in the foreground', 'the view of the water and mountain as the sun goes down', 'small boats on water with setting sun behind distant hills', 'a sun setting behind the mountains with a bunch of boats in the bay', 'many boats are floating in the water at sunrise']
+Predicted (greedy): a boat is sitting on the water near a body of water
+Target: ['lots of boats anchored in a harbor', 'boats are lined up at dock that is on a coastline', 'a small lake full of bright boats and some houses', 'several boats are sitting docked in a harbor', 'a bunch of boats are moored in a harbor']
+Predicted (greedy): a plate of food with a fork and knife
+Target: ['a plate of food including a sandwich and salad is pictured here', 'a white plastic fork is laying in some food', 'a plate with some meat bread and salad on it', 'a dish resting on a plate with a plastic fork', 'a plate consisting of meatinside bread beside a small bowl of chopped vegetables']
+Predicted (greedy): a bunch of bananas are on a table
+Target: ['this is fresh fruit sitting in a pile', 'an assortment of fruit for sale at a market', 'bananas oranges pears and other fruit in front of a painted sign', 'several kinds of fruit are displayed in the stand', 'bananas and pears and peaches at a fruit market']
+Predicted (greedy): a living room with a large window and a fireplace
+Target: ['a living room has a couch a chair and a wood stove', 'a luxuriously appointed living room in a rustic cottage', 'a wood burning stove television and couch in a living room', 'a living room with a a lot of chairs and a fancy fireplace', 'rustic looking living room with leather furniture and fireplace']
+Predicted (greedy): a group of cows standing in a field
+Target: ['cows and caves behind barbed wire fence on a pasture', 'cows standing inside of a barbed wire fence', 'serveral cows behind barbed wire in a field', 'there are several cows behind a fence they are looking at the camera', 'a pasture of cows looking over a fence']
+Predicted (greedy): a man standing next to a blender in a kitchen
+Target: ['a foot ball fan is showing off his team spirit', 'a chef with a mustache standing by a stove', 'a man with a huge mustache next to a large metal pot in a kitchen', 'a man dressed in uniform with a fake mustache', 'a mustached man is standing in front of a larger mustache']
+Predicted (greedy): a brown horse standing in a field with a brown horse
+Target: ['a brown horse standing in a lush green field with a bird on its back', 'the bird shares a relationship with the brown horse', 'small white bird sits on the back of a horse in an open field', 'a bird is sitting a top of a horse', 'a horse in a field of tall grass']
+Predicted (greedy): a brown dog laying on a bed with a blue and white dog
+Target: ['a bob laying down on a comforter of a bed', 'a little black dog sitting on  multi color comforter', 'a long haired dog curled up on a bed', 'a close up of a dog laying on a bed', 'a large brown dog sitting on top of a bed']
+Predicted (greedy): a sign that says <UNK> <UNK> <UNK> <UNK> <UNK> <UNK> <UNK> <UNK> <UNK> <UNK> <UNK> <UNK> <UNK> <UNK> <UNK> <UNK> <UNK> <UNK> <UNK> <UNK> <UNK> <UNK> <UNK> <UNK> <UNK> <UNK> <UNK> <UNK> <UNK> <UNK> <UNK> <UNK> <UNK> <UNK> <UNK> <UNK>
+Target: ['a mirror on top of a pole on the street', 'the traffic mirror shows the building across the street', 'a mirror road signage and a skyscraper in the city', 'a large round mirror sitting up on an orange pole', 'a large rounded mirror to help people see past certain angles']
+Predicted (greedy): a desk with a laptop computer and a mouse
+Target: ['an office desk with three laptops a computer monitor and keyboard', 'cluttered desk top with three laptops and one computer', 'a table with four computers on top three of which are laptops', 'four computers sitting on desks in an office', 'a desk with multiple laptops and a desktop monitor']
+Predicted (greedy): a bowl of cereal with a bowl of green bananas
+Target: ['a green bowl with two ripe bananas in it', 'the bananas are in the bowl on the counter', 'a pair of ripe bananas in a green bowl', 'two bananas sit in a green bowl on a counter', 'two ripe spotted bananas are sitting inside a green bowl on a gray counter']
+Predicted (greedy): a boy sitting on a skateboard with a helmet
+Target: ['a person riding a skate board siting down on a road', 'a boy sitting on a skateboard rolling down a street with a pole in his hand', 'a boy is riding a skateboard while holding a pole', 'a boy sitting on a skateboard holding on to a stick with wheels', 'a young boy sits on a skateboard holding a stick with wheels']
+Predicted (greedy): a man in a red jacket is sitting on a bench
+Target: ['a man with safety equipment next to a fallen tree and red fire hydrant', 'a worker standing next to a tree thats been chopped down', 'a man standing by a tree and a fire hydrant', 'the man is cutting down the trees around the red fire hydrant', 'the man is cutting trees down outside']
+Predicted (greedy): a black cat sitting on a window sill
+Target: ['two black cats sit on a windowsill looking into the backyard garden', 'two cats are seated on a windowsill and look into a back yard', 'two black cats sit in the window sill looking out the window', 'two cats sitting on a window sill looking out', 'a couple of black cats sitting in a window sill looking out a window']
+Predicted (greedy): a street sign with a traffic light and a building
+Target: ['some street signs sitting on a pole next to a street light', 'a traffic light and road signs are posted near buildings', 'a traffic light and a sign for the entrance of highway 527 south', 'a streetlight next to a street sign and a directional sign', 'a green light is next to a couple of street signs on a pole']
+Predicted (greedy): a man and a woman riding horses on a beach
+Target: ['two horses on a beach near the water', 'a couple of people riding horses on a  beach', 'a couple of horses running on a beach', 'a pair of young women ride horses on the beach by the water', 'two horseback riders are at the beach on a sunny day']
+Predicted (greedy): a vase filled with yellow flowers in a window
+Target: ['these red and yellow flowers are in a white vase', 'a vase full of flowers sits next to the window sill', 'the vase is filled with lots of flowers', 'flowers sit in a vase that stands in front of a window', 'a vase with a flower arrangement in front of a window']
+Predicted (greedy): a dog standing next to a car with a backpack
+Target: ['a dog with shoes and a backpack standing next to car', 'a dog with a red back pack standing on a gravel road', 'a dog with saddle packs and walking boots ready for a hike', 'a dog with booties and matching knapsack stands in front of a vehicle with an open door', 'a dog carrying a bag on its back and wearing shoes']
+Predicted (greedy): a colorful colorful umbrella is sitting in the grass
+Target: ['dozens of opened umbrellas hanging above in multicolors', 'an area full of umbrellas hanging up over head', 'a bunch of different color umbrellas in the air', 'umbrellas in many colors hang above a city street', 'several colored umbrellas hanging from wires on a street']
+Predicted (greedy): a group of people sitting on a couch with a dog
+Target: ['a couple of people sitting in a living room in pink chairs', 'people are sitting around on chairs and a couch', 'some people sitting around a very cozy looking room', 'women are sitting in the living room in pink chairs', 'a group of people sitting in living are next to an entertainment unit']
+Predicted (greedy): a woman sitting on a chair with a dog
+Target: ['a black and tan dog sits in an easy chair near a window with a polka dot shade', 'large dog in a brown chair by a window', 'a dogs tongue is sticking out and smiling while sitting on a chair', 'the dog is sitting on a brown easy chair beside a window', 'brown and black dog sitting on the brown couch by itself']
+Predicted (greedy): a large building with a large clock tower
+Target: ['large factory smoke towers shadowed by a large building behind them', 'buildings surrounding two tall skinny towers in a busy area', 'chimneys point to the sky on a clear sunny day', '2 smoke stacks rise over the power plant for a large building', 'a row of buildings with two industrial smoke stacks']
+Predicted (greedy): a man riding a motorcycle next to a car
+Target: ['a man riding a motorcycle next to a woman driving an suv', 'a man on a motorcycle is talking with a person in a minivan in a residential neighborhood', 'a woman in a van and a man in a motorcycle pass by and talk', 'a person in a van with a canoe strapped to the roof stopped in the middle of the street next to a motorcyclist with a helmet on a motorcycle', 'a man on a motorcycle talking to a woman in an suv on residential street']
+Predicted (greedy): a beach with a bunch of umbrellas and a beach
+Target: ['several umbrellas and chairs gathered around at a beach', 'a beach with beach chairs and raised umbrellas', 'a sandy beach is full of blue umbrellas', 'many blue beach umbrellas near lounge chairs at the beach', 'several beach umbrellas are up next to  lounges with a view of the beach']
+Predicted (greedy): a giraffe standing next to a tree in a field
+Target: ['an elderly giraffe with a mottled forehead looks at the camera', 'a giraffe with bumps on its head next to a tree', 'the head of a giraffe amongst trees in a natural setting', 'a giraffe standing in front of a tree', 'there is a adult griaffee that is in the photo looking at something']
+Predicted (greedy): a sink and a mirror in a kitchen
+Target: ['a kitchen with a  sink surrounded by a bunch of cluttered items', 'a rather dirty kitchen sink with multiple scattered objects', 'a sink that has two cups in it and dishes to the side', 'a kitchen sink surrounded by utensils and misc items', 'a sink with some appliances inside of it']
+Predicted (greedy): a sign on a street with a lot of cars
+Target: ['there are people sitting on the ground painting the street', 'a few kids playing with each other on harlem river drive', 'kids sit in the street painting a divider', 'some people sitting and painting a road divider', 'young people painting a mural on a traffic divider']
+Predicted (greedy): a giraffe standing next to a stone wall
+Target: ['a couple of giraffe in a field near some trees', 'a couple of giraffes are on a field by rocks and palm trees', 'two giraffes standing in a rocky type of grassland with a few trees', 'a giraffe stands near trees as another stands in the field', 'giraffes on dry rocky hillside near palm trees']
+Predicted (greedy): a yellow train is going through the station
+Target: ['the view from a platform at a train station', 'two trains adjacent to each other that are near a train station platform', 'two trains traveling paralell to one another on train tracks', 'a view of a railway station with two trains in the distance', 'two yellow trolley trains are on the tracks']
+Predicted (greedy): a person on skis is skiing down a hill
+Target: ['people are cross country skiing through a field', 'a skier standing on a slope of snow', 'people are skiing in a snowy field by a forest', 'a snow covered trail with a person cross country skiing on the trail and other people in the distance', 'several people are cross country skiing on a trail']
+Predicted (greedy): a woman sitting on a bed with a piece of cake
+Target: ['a girl is sitting on a bed and has each hand on a notepad', 'a lady is sitting on a bed trying to organize things', 'a person sitting on the end of a bed on a blanket', 'someone sitting on their bed with accessories', 'a child sitting on a bed writing out cards']
+Predicted (greedy): a man standing in a room with a suitcase
+Target: ['a man holding a surfboard inside of a room', 'his surfboard is a perfect fit for his height', 'a man is standing in a room holding a surfboard', 'the older man is getting ready to surf again', 'the man holds a newly made surfboard before it is painted']
+Predicted (greedy): a cat sitting on a wooden bench next to a small dog
+Target: ['a dog and a cat sit on chairs near each other', 'two chairs one with a dog and one with a cat', 'cat and dog sitting in opposite chairs of each other', 'a cat and a dog sit on seperate seats next to each other', 'brown cat and dog sitting on identical furniture']
+Predicted (greedy): a man riding a wave on a surfboard
+Target: ['a man riding a surfboard on top of a river', 'a person is riding a surfboard in a narrow waterway', 'a man in a wet suit is surfing in a canal', 'a man is surfing in a waterway while another watches and a man is down', 'two men are surfing down a rough stream']
+Predicted (greedy): a man and a woman riding on a elephant
+Target: ['a man and a woman ride an elephant for the first time', 'a man and woman are sitting on a very big elephant', 'a man and a woman are riding on an elephant', 'a man and woman sitting on an elephant', 'a man and woman are sitting on the back of an elephant']
+Predicted (greedy): a cat sitting on a computer keyboard
+Target: ['a woman kneeling down to an orange cat on a lap top computer', 'a woman with glasses snuggling with an orange cat', 'a cat laying down next to a woman wearing glasses', 'a cat and girl with their heads laying on a laptop', 'a person laying their face on an orange cat']
+Predicted (greedy): a woman holding a tennis racket and a tennis ball
+Target: ['a little boy in a hoodie holds a racquet', 'a boy holding a tennis racket on a staircase', 'toddler boy sits on the stairs holding a tennis racket', 'little boy siting on a stair holding a tennis racket', 'a little boy sitting on the stairs with a racquet']
+Predicted (greedy): a man and woman walking down a street with a cow
+Target: ['a cow and several people on the sidewalk next to a busy street', 'a cow is standing next to a directional sign while people walk along the sidewalk', 'large sized bull grazing over dumped produce in the road', 'a black cow standing by a street sign and people walking by', 'a bony black cow is in on the city street']
+Predicted (greedy): a man standing next to a refrigerator in front of a refrigerator
+Target: ['a white train car lays on its side in the dark while a man with a light is nearby', 'on overturned bus on the side of the road', 'a bus is tipped over on its side', 'a bus tipped over on the side of the road', 'a picture of a bus that is turned over']
+Predicted (greedy): a living room with a wooden table and a wooden table
+Target: ['a living area with counter chairs windows and an air hockey table', 'a living room with hard wood floors filled with furniture', 'a picture of a family room with a computer set up at a breakfast counter', 'an open living room with hardwood floors and a vase of flowers', 'a chair and counter in a large room']
+Predicted (greedy): a street scene with a street sign and a tree
+Target: ['a street light and some trees on a street', 'a view of a tree lined city street with shops', 'a street with sign lamppost and many trees', 'a street lamp is on a street with a sign and flowers', 'buildings that line both sides of a street where cars are driving']
+Predicted (greedy): a man riding a bike down a street
+Target: ['the motorcycle procession made their way down the crowded street', 'dirt bikes with lights on riding along a street with people watching from the side walk', 'police officers are on parade as crowds watch from aside', 'a group of motorcycles are going down the road', 'a line of police motorcycles driving down the road']
+Predicted (greedy): a sandwich and a drink on a plate with a fork
+Target: ['a lemon piece of pie sitting on top of a blue and white plate', 'a very pretty plate with a piece of quiche on it', 'a slice of pie is sitting on a plate with a fork', 'a lemon dessert sitting on a wood table', 'a slice of quiche and a fork sit on a plate']
+Predicted (greedy): a giraffe standing next to a tree in a field
+Target: ['a giraffe standing next to leaf filled trees', 'the head of a giraffe with trees behind it', 'the head of a giraffe surrounded by leaves', 'a sunlit giraffes head and neck against a background of trees', 'a giraffe is standing near some green leafy trees']
+Predicted (greedy): a kitchen with a sink and a microwave
+Target: ['a kitchen with a refrigerator a counter with chairs', 'bar stools at a bar separating a dining area from a kitchen', 'the small kitchen has large cabinets and two stoves', 'a kitchen is shown with chairs and an oven', 'a very nice large modern style kitchen with a bar']
+Greedy:
+BLEU: 0.2413 | METEOR: 0.4329 | CIDEr: 0.7666
+  File "/home/hice1/agupta965/ondemand/CS4644-DL/src/image-captioning/train_wandb.py", line 529, in <module>
+    train(
+  File "/home/hice1/agupta965/ondemand/CS4644-DL/src/image-captioning/train_wandb.py", line 371, in train
+    generated_captions_beam = model.caption_images_beam_search(imgs, train_dataset.vocab, beam_width, mode=mode)
+  File "/home/hice1/agupta965/ondemand/CS4644-DL/src/image-captioning/models/stacked.py", line 166, in caption_images_beam_search
+    yolo_out = self.fc_yolo(enc_output[:, (self.cnn_out_size+self.vit_out_size):])
+  File "/home/hice1/agupta965/.conda/envs/SC4001/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1729, in __getattr__
+    raise AttributeError(f"'{type(self).__name__}' object has no attribute '{name}'")
+AttributeError: 'VITCNNYOLOAttentionModel' object has no attribute 'fc_yolo'

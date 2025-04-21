@@ -161,9 +161,13 @@ class VITCNNYOLOAttentionModel(DecoderTransformer):
             else:
                 enc_output = self.vit.forward(images)
 
+            #print(enc_output.shape)
             vit_output = self.fc_vit(enc_output[:, :self.vit_out_size])
             cnn_output = self.fc_cnn(enc_output[:, self.vit_out_size:(self.vit_out_size+self.cnn_out_size)])
-            yolo_out = self.fc_yolo(enc_output[:, (self.cnn_out_size+self.vit_out_size):])
+            # yolo_out = self.fc_yolo(enc_output[:, (self.cnn_out_size+self.vit_out_size):])
+            yolo_feats = self.vit.yolo(images)
+            # print(yolo_feats.shape)
+            yolo_out = self.yolo_downsampler(yolo_feats)
 
             enc_output = torch.cat((vit_output, cnn_output, yolo_out), dim=1)
             enc_output = self.fc_scale(enc_output)

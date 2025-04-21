@@ -167,7 +167,9 @@ def train(
     
     if os.path.exists(f'./checkpoints/{model_arch}/{dataset}/{saved_name}'):
         exit(f"Model {model_arch}, {saved_name}, dataset {dataset} already trained")
-
+    with open("wandbkey.txt", "r") as f:
+        key = f.read()
+    wandb.login(key=key)
     run = wandb.init(
         # Set the wandb entity where your project will be logged (generally your team name).
         entity="aaravgupta04",

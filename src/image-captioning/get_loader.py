@@ -235,10 +235,15 @@ def get_loader(
         test_dataset = ImageCaptionDataset(root_folder, test_img_captions, mode=mode, precomputed_dir=precomputed_dir, dataset=dataset, model_arch=model_arch, transform=transform)
         
     elif dataset == 'mscoco':
-        train_caption_path = './dataset/mscoco/annotations/captions_train2014.json'
-        val_test_caption_path = './dataset/mscoco/annotations/captions_val2014.json'
-        train_root_folder = './dataset/mscoco/train2014/'
-        val_test_root_folder = './dataset/mscoco/val2014/'
+        # train_caption_path = './dataset/mscoco/annotations/captions_train2014.json'
+        # val_test_caption_path = './dataset/mscoco/annotations/captions_val2014.json'
+        # train_root_folder = './dataset/mscoco/train2014/'
+        # val_test_root_folder = './dataset/mscoco/val2014/'
+
+        train_caption_path = '/storage/ice1/0/7/agupta965/mscoco/annotations/captions_train2014.json'
+        val_test_caption_path = '/storage/ice1/0/7/agupta965/mscoco/annotations/captions_val2014.json'
+        train_root_folder = '/storage/ice1/0/7/agupta965/mscoco/train2014/'
+        val_test_root_folder = '/storage/ice1/0/7/agupta965/mscoco/val2014/'
         
         with open(train_caption_path) as f:
             train_captions = json.load(f)

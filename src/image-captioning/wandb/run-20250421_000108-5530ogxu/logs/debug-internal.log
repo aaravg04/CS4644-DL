@@ -1,0 +1,7 @@
+{"time":"2025-04-21T00:01:08.193734528-04:00","level":"INFO","msg":"stream: starting","core version":"0.19.9","symlink path":"/home/hice1/agupta965/ondemand/CS4644-DL/src/image-captioning/wandb/run-20250421_000108-5530ogxu/logs/debug-core.log"}
+{"time":"2025-04-21T00:01:08.364935771-04:00","level":"INFO","msg":"created new stream","id":"5530ogxu"}
+{"time":"2025-04-21T00:01:08.36495436-04:00","level":"INFO","msg":"stream: started","id":"5530ogxu"}
+{"time":"2025-04-21T00:01:08.36551672-04:00","level":"INFO","msg":"handler: started","stream_id":"5530ogxu"}
+{"time":"2025-04-21T00:01:08.365531199-04:00","level":"INFO","msg":"writer: Do: started","stream_id":"5530ogxu"}
+{"time":"2025-04-21T00:01:08.365648315-04:00","level":"INFO","msg":"sender: started","stream_id":"5530ogxu"}
+{"time":"2025-04-21T00:01:08.465410027-04:00","level":"INFO","msg":"Starting system monitor"}

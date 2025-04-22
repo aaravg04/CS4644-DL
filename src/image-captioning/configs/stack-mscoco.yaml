@@ -11,7 +11,7 @@ training:
   val_ratio: 0.1
   test_ratio: 0.05
   # model settings
-  model_arch: 'stacked' # 'cnn-rnn' or 'cnn-attn' or 'vitcnn-attn'
+  model_arch: 'yolocnn_rnn_model' # 'cnn-rnn' or 'cnn-attn' or 'vitcnn-attn' or 'yolocnn_rnn_model'
   dataset: 'mscoco' # 'mscoco' or 'flickr'
   mode: 'image' # 'precomputed' or 'image'
   beam_width: 4
@@ -25,3 +25,7 @@ vitcnn_attn_model:
   embed_size: 512
   num_layers: 2
   num_heads: 4
+
+yolocnn_rnn_model:
+  embed_size: 512
+  hidden_size: 512

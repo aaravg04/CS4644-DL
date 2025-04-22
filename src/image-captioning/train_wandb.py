@@ -23,6 +23,7 @@ from models.vitcnnattn_model import VITCNNAttentionModel
 from models.vitattn_model import VITAttentionModel
 from models.yoloattn_model import YOLOAttentionModel
 from models.yolocnnattn_model import YOLOCNNAttentionModel
+from models.yolornn_model import YOLOCNNtoRNN
 from models.stacked import VITCNNYOLOAttentionModel
 
 def parse_args():
@@ -139,7 +140,10 @@ def get_model(model_config, vocab_size, device):
         yolocnn_num_layers = model_config['yolocnn_num_layers']
         yolocnn_num_heads = model_config['yolocnn_num_heads']
         return YOLOCNNAttentionModel(yolocnn_embed_size, vocab_size, yolocnn_num_heads, yolocnn_num_layers).to(device)
-    
+    elif model_arch == "yolocnn-rnn":
+        yolocnn_embed_size = model_config['yolocnn_embed_size']
+        yolocnn_hidden_size = model_config['yolocnn_hidden_size']
+        return YOLOCNNtoRNN(yolocnn_embed_size, yolocnn_hidden_size, vocab_size).to(device)
     else:
         raise ValueError("Model not recognized")
 
@@ -172,9 +176,9 @@ def train(
     wandb.login(key=key)
     run = wandb.init(
         # Set the wandb entity where your project will be logged (generally your team name).
-        entity="aaravgupta04",
+        entity="shivam-singh-georgia-institute-of-technology",
         # Set the wandb project where this run will be logged.
-        project="dl-stackmodel",
+        project="cs7643-proj",
         # Track hyperparameters and run metadata.
         config={
             "learning_rate": learning_rate,
@@ -518,6 +522,10 @@ if __name__ == "__main__":
         model_config['yolocnn_embed_size'] = embed_size
         model_config['yolocnn_num_layers'] = num_layers
         model_config['yolocnn_num_heads'] = int(config['yolocnn_attn_model']['num_heads'])
+    
+    if 'yolocnn_rnn_model' in config:
+        model_config['yolocnn_embed_size'] = embed_size
+        model_config['yolocnn_hidden_size'] = int(config['yolocnn_rnn_model']['hidden_size'])
     
     if num_layers == -1:
         saved_name = f"bs{batch_size}_lr{learning_rate}_es{embed_size}"

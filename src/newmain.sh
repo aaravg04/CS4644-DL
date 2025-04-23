@@ -1,6 +1,6 @@
 #!/bin/bash
 # JOB HEADERS HERE
-#SBATCH -JTrainAttemptStack_ED512_B512                         # Job name
+#SBATCH -JTrainAttemptYOLORNN_ED512_B512                         # Job name
 #SBATCH -N1 --gres=gpu:H200:1                       # Number of nodes and GPUs required
 #SBATCH --mem-per-gpu=24G                           # Memory per gpu
 #SBATCH -oReport-%j.out                             # Combined output and error messages file
@@ -10,7 +10,7 @@
 
 module add anaconda3/2022.05 
 # cd /home/hice1/<gt_username>/ondemand/<path to image_captioning subdirectory of repo>
-cd "/home/hice1/ssingh709/ondemand/CS4644-DL/src/image-captioning/"
+cd "/home/hice1/ssingh709/scratch/CS4644-DL/src/image-captioning"
 source activate SC4001 # venv
 pip install wandb
 srun python --version # checking that python is working

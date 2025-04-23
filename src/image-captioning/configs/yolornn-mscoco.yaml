@@ -11,7 +11,7 @@ training:
   val_ratio: 0.1
   test_ratio: 0.05
   # model settings
-  model_arch: 'yolocnn_rnn_model' # 'cnn-rnn' or 'cnn-attn' or 'vitcnn-attn' or 'yolocnn_rnn_model'
+  model_arch: 'yolocnn-rnn' # 'cnn-rnn' or 'cnn-attn' or 'vitcnn-attn' or 'yolocnn-rnn'
   dataset: 'mscoco' # 'mscoco' or 'flickr'
   mode: 'image' # 'precomputed' or 'image'
   beam_width: 4

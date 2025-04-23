@@ -212,8 +212,8 @@ def get_loader(
     if dataset =='flickr':
         # root_folder = "./dataset/flickr30k/images/"
         # captions_path = "./dataset/flickr30k/captions.txt"
-        root_folder = "/storage/ice1/0/7/agupta965/flickr30k/images"
-        captions_path = "/storage/ice1/0/7/agupta965/flickr30k/captions.txt"
+        root_folder = "/home/hice1/ssingh709/scratch/flickr30k/images"
+        captions_path = "/home/hice1/ssingh709/scratch/flickr30k/captions.txt"
 
         img_captions = pd.read_csv(captions_path)
         img_captions = img_captions.groupby("image").agg(list).reset_index()
@@ -240,10 +240,10 @@ def get_loader(
         # train_root_folder = './dataset/mscoco/train2014/'
         # val_test_root_folder = './dataset/mscoco/val2014/'
 
-        train_caption_path = '/storage/ice1/0/7/agupta965/mscoco/annotations/captions_train2014.json'
-        val_test_caption_path = '/storage/ice1/0/7/agupta965/mscoco/annotations/captions_val2014.json'
-        train_root_folder = '/storage/ice1/0/7/agupta965/mscoco/train2014/'
-        val_test_root_folder = '/storage/ice1/0/7/agupta965/mscoco/val2014/'
+        train_caption_path = '/home/hice1/ssingh709/scratch/mscoco/annotations/captions_train2014.json'
+        val_test_caption_path = '/home/hice1/ssingh709/scratch/mscoco/annotations/captions_val2014.json'
+        train_root_folder = '/home/hice1/ssingh709/scratch/mscoco/train2014/'
+        val_test_root_folder = '/home/hice1/ssingh709/scratch/mscoco/val2014/'
         
         with open(train_caption_path) as f:
             train_captions = json.load(f)

@@ -3,6 +3,8 @@ import torch.nn as nn
 import torch.nn.functional as F
 from models.modules.encoder_cnn import EncoderCNN
 from models.yoloattn_model import YOLOModel
+
+YOLO_FEATURE_DIM = 1029
    
 class DecoderRNN(nn.Module):
     def __init__(self, embed_size, hidden_size, vocab_size, dropout=0.2):
@@ -10,7 +12,8 @@ class DecoderRNN(nn.Module):
         self.hidden_size = hidden_size
         self.vocab_size = vocab_size
 
-        self.fc1 = nn.Linear(2048, embed_size, bias = False)
+        # self.fc1 = nn.Linear(2048, embed_size, bias = False)
+        self.fc1 = nn.Identity()
         self.dropout = nn.Dropout(dropout)
         self.batchnorm = nn.BatchNorm1d(embed_size)
 
@@ -37,22 +40,26 @@ class DecoderRNN(nn.Module):
 class YOLOCNNtoRNN(nn.Module):
     def __init__(self, embed_size, hidden_size, vocab_size):
         super(YOLOCNNtoRNN, self).__init__()
+        self.yolo_output_size = 84 * 1029
         self.encoderCNN = YOLOModel()
         self.decoderRNN = DecoderRNN(embed_size, hidden_size, vocab_size)
+        self.fc_yolo = nn.Linear(self.yolo_output_size, embed_size)
 
     def forward(self, images, captions, mode='precomputed'):
         if mode == 'precomputed':
             features = images
         else:
             with torch.no_grad():
-                features = self.encoderCNN(images)
-                
+                features = self.encoderCNN.forward(images)
+            features = features.detach().clone()
+        features = features.view(features.size(0), -1)
+        features = self.fc_yolo(features) 
         outputs = self.decoderRNN(features, captions)
         return outputs
     
     def precompute_image(self, images):
         with torch.no_grad():
-            features = self.encoderCNN(images)
+            features = self.encoderCNN.forward(images)
         return features
     
     def caption_images(self, images, vocabulary, mode="precomputed", max_length=40):
@@ -66,7 +73,8 @@ class YOLOCNNtoRNN(nn.Module):
             if mode == 'precomputed':
                 img_features = images
             else:
-                img_features = self.encoderCNN(images)  # img_features shape: (batch_size, feature_dim)
+                img_features = self.encoderCNN.forward(images)  # img_features shape: (batch_size, feature_dim)
+            img_features = self.fc_yolo(img_features)  # Project to embedding size
             img_features = self.decoderRNN.dropout(img_features)
             img_features = self.decoderRNN.fc1(img_features)  # [batch_size, embed_size]
             img_features = self.decoderRNN.batchnorm(img_features)
@@ -120,7 +128,8 @@ class YOLOCNNtoRNN(nn.Module):
             if mode == 'precomputed':
                 img_features = images
             else:
-                img_features = self.encoderCNN(images)
+                img_features = self.encoderCNN.forward(images)
+            img_features = self.fc_yolo(img_features)
             img_features = self.decoderRNN.dropout(img_features)
             img_features = self.decoderRNN.fc1(img_features)
             img_features = self.decoderRNN.batchnorm(img_features) 

@@ -238,9 +238,9 @@ def train(
 
     # Initialize SummaryWriter only on the main process
     if accelerator.is_main_process:
-        if not os.path.exists(f"/storage/ice1/0/7/agupta965/runs/{model_arch}/{dataset}/{saved_name}"):
-            os.makedirs(f"/storage/ice1/0/7/agupta965/runs/{model_arch}/{dataset}/{saved_name}")
-        writer = SummaryWriter(f"/storage/ice1/0/7/agupta965/runs/{model_arch}/{dataset}/{saved_name}")
+        if not os.path.exists(f"/home/hice1/ssingh709/scratch/CS4644-DL/runs/{model_arch}/{dataset}/{saved_name}"):
+            os.makedirs(f"/home/hice1/ssingh709/scratch/CS4644-DL/runs/{model_arch}/{dataset}/{saved_name}")
+        writer = SummaryWriter(f"/home/hice1/ssingh709/scratch/CS4644-DL/runs/{model_arch}/{dataset}/{saved_name}")
     else:
         writer = None
     step = 0
@@ -430,9 +430,9 @@ def train(
                     "step": step,
                 }
                 # pointing to checkpoints in scratch
-                if not os.path.exists(f"/storage/ice1/0/7/agupta965/checkpoints/{model_arch}/{dataset}/{saved_name}"):
-                    os.makedirs(f"/storage/ice1/0/7/agupta965/checkpoints/{model_arch}/{dataset}/{saved_name}")
-                filename = f"/storage/ice1/0/7/agupta965/checkpoints/{model_arch}/{dataset}/{saved_name}/checkpoint_epoch_{epoch + 1}.pth.tar"
+                if not os.path.exists(f"/home/hice1/ssingh709/scratch/CS4644-DL/checkpoints/{model_arch}/{dataset}/{saved_name}"):
+                    os.makedirs(f"/home/hice1/ssingh709/scratch/CS4644-DL/checkpoints/{model_arch}/{dataset}/{saved_name}")
+                filename = f"/home/hice1/ssingh709/scratch/CS4644-DL/checkpoints/{model_arch}/{dataset}/{saved_name}/checkpoint_epoch_{epoch + 1}.pth.tar"
                 save_checkpoint(checkpoint, filename)
 
                 metrics = {
@@ -446,9 +446,9 @@ def train(
                 }
 
                 # Save metrics to a JSON file
-                if not os.path.exists(f'/storage/ice1/0/7/agupta965/metric_logs/{model_arch}/{dataset}/{saved_name}'):
-                    os.makedirs(f'/storage/ice1/0/7/agupta965/metric_logs/{model_arch}/{dataset}/{saved_name}')
-                metrics_file_path = f'/storage/ice1/0/7/agupta965/metric_logs/{model_arch}/{dataset}/{saved_name}//train_val_to_epoch_{epoch+1}.json'
+                if not os.path.exists(f'/home/hice1/ssingh709/scratch/CS4644-DL/metric_logs/{model_arch}/{dataset}/{saved_name}'):
+                    os.makedirs(f'/home/hice1/ssingh709/scratch/CS4644-DL/metric_logs/{model_arch}/{dataset}/{saved_name}')
+                metrics_file_path = f'/home/hice1/ssingh709/scratch/CS4644-DL/metric_logs/{model_arch}/{dataset}/{saved_name}/train_val_to_epoch_{epoch+1}.json'
                 os.makedirs(os.path.dirname(metrics_file_path), exist_ok=True)
                 with open(metrics_file_path, 'w') as json_file:
                     json.dump(metrics, json_file, indent=4)

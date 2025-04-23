@@ -16,16 +16,16 @@
 
 ## MSCOCO
 wget "http://images.cocodataset.org/zips/train2014.zip" 
-unzip -q train2014.zip -d /storage/ice1/0/7/agupta965/mscoco 
+unzip -q train2014.zip -d /home/hice1/ssingh709/scratch/mscoco 
 rm train2014.zip
 echo "moved train to scratch and deleted local"
 
 wget "http://images.cocodataset.org/zips/val2014.zip"
-unzip -q val2014.zip -d /storage/ice1/0/7/agupta965/mscoco
+unzip -q val2014.zip -d /home/hice1/ssingh709/scratch/mscoco
 rm val2014.zip
 echo "moved val to scratch and deleted local"
 
 wget http://images.cocodataset.org/annotations/annotations_trainval2014.zip
-unzip -q annotations_trainval2014.zip -d /storage/ice1/0/7/agupta965/mscoco
+unzip -q annotations_trainval2014.zip -d /home/hice1/ssingh709/scratch/mscoco
 rm annotations_trainval2014.zip
 echo "moved annotations to scratch and deleted local"

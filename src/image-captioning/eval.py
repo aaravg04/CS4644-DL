@@ -262,6 +262,15 @@ if __name__ == "__main__":
         model_config['yolocnn_embed_size'] = embed_size
         model_config['yolocnn_num_layers'] = num_layers
         model_config['yolocnn_num_heads'] = 4
+
+    elif model_arch == "stacked":
+        # vitcnn_embed_size = model_config['vitcnn_embed_size']
+        # vitcnn_num_layers = model_config['vitcnn_num_layers']
+        # vitcnn_num_heads = model_config['vitcnn_num_heads']
+        # return VITCNNYOLOAttentionModel(vitcnn_embed_size, vocab_size, vitcnn_num_heads, vitcnn_num_layers).to(device)
+        model_config['vitcnn_embed_size'] = embed_size
+        model_config['vitcnn_num_layers'] = num_layers
+        model_config['vitcnn_num_heads'] = 4
     
     if model_arch == "cnn-rnn":
         saved_name = f"bs{batch_size}_lr{learning_rate}_es{embed_size}"

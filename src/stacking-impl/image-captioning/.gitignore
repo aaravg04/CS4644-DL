@@ -1,0 +1,6 @@
+flickr8k
+flickr30k
+dataset
+*__pycache__
+checkpoints
+precomputed

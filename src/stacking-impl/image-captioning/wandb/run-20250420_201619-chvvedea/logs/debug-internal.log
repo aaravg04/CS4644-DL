@@ -1,0 +1,7 @@
+{"time":"2025-04-20T20:16:19.526482895-04:00","level":"INFO","msg":"stream: starting","core version":"0.19.9","symlink path":"/home/hice1/agupta965/ondemand/CS4644-DL/src/image-captioning/wandb/run-20250420_201619-chvvedea/logs/debug-core.log"}
+{"time":"2025-04-20T20:16:19.766080816-04:00","level":"INFO","msg":"created new stream","id":"chvvedea"}
+{"time":"2025-04-20T20:16:19.766110883-04:00","level":"INFO","msg":"stream: started","id":"chvvedea"}
+{"time":"2025-04-20T20:16:19.766290864-04:00","level":"INFO","msg":"handler: started","stream_id":"chvvedea"}
+{"time":"2025-04-20T20:16:19.766305093-04:00","level":"INFO","msg":"writer: Do: started","stream_id":"chvvedea"}
+{"time":"2025-04-20T20:16:19.766528707-04:00","level":"INFO","msg":"sender: started","stream_id":"chvvedea"}
+{"time":"2025-04-20T20:16:19.921685172-04:00","level":"INFO","msg":"Starting system monitor"}

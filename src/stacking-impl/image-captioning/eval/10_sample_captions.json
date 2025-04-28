@@ -1,0 +1,182 @@
+{
+    "3111261053.jpg": {
+        "flickr": {
+            "greedy": {
+                "vitcnn-attn": "a woman is sitting in a restaurant",
+                "cnn-rnn": "a group of people are sitting at a table with a large glass of wine",
+                "cnn-attn": "a group of people are sitting at a bar",
+                "vit-attn": "a group of people are standing in a restaurant",
+                "yolocnn-attn": "a man in a white shirt is sitting in a restaurant"
+            },
+            "beam": {
+                "vitcnn-attn": "people are sitting in a restaurant",
+                "cnn-rnn": "a group of people are sitting at a table",
+                "cnn-attn": "a group of people are sitting at a bar",
+                "vit-attn": "a group of people are in a cafe",
+                "yolocnn-attn": "a group of people sitting around a table"
+            }
+        }
+    },
+    "2834409892.jpg": {
+        "flickr": {
+            "greedy": {
+                "vitcnn-attn": "a woman sitting on a bench with a man in a white shirt and black shorts is sitting on a bench",
+                "cnn-rnn": "a woman in a black shirt and a woman in a white dress are sitting on a bench",
+                "cnn-attn": "two women are sitting on a bench in front of a building",
+                "vit-attn": "a woman in a black shirt and blue shorts sits on a bench with a sign in her hand",
+                "yolocnn-attn": "a man and a woman are sitting on a bench"
+            },
+            "beam": {
+                "vitcnn-attn": "a woman sits on a bench in front of a billboard",
+                "cnn-rnn": "two women sitting on a bench",
+                "cnn-attn": "two women are sitting on a bench",
+                "vit-attn": "a woman in a black and white striped shirt is sitting on a bench with a drink in her hand",
+                "yolocnn-attn": "a man and a woman sitting on a bench"
+            }
+        }
+    },
+    "2352414953.jpg": {
+        "flickr": {
+            "greedy": {
+                "vitcnn-attn": "a little girl in a green shirt is sitting in a highchair",
+                "cnn-rnn": "a little boy is eating a sandwich",
+                "cnn-attn": "a young girl in a highchair eats a pizza",
+                "vit-attn": "a smiling baby is sitting in a highchair with a bowl of food",
+                "yolocnn-attn": "a baby is eating a cookie"
+            },
+            "beam": {
+                "vitcnn-attn": "a little girl is sitting in a highchair",
+                "cnn-rnn": "a little boy is eating a sandwich",
+                "cnn-attn": "a young girl eats a cookie",
+                "vit-attn": "a baby is sitting in a highchair with his eyes closed",
+                "yolocnn-attn": "a young boy is eating a corn"
+            }
+        }
+    },
+    "3090923153.jpg": {
+        "flickr": {
+            "greedy": {
+                "vitcnn-attn": "a man in a black shirt is playing the drums",
+                "cnn-rnn": "a man in a black shirt and black pants plays a guitar",
+                "cnn-attn": "a man in a black shirt is playing the drums",
+                "vit-attn": "a man playing the drums",
+                "yolocnn-attn": "a man in a white shirt is playing a drum set"
+            },
+            "beam": {
+                "vitcnn-attn": "a man is playing the drums",
+                "cnn-rnn": "a man in a black shirt is playing a guitar",
+                "cnn-attn": "a man is playing the drums",
+                "vit-attn": "a man playing the drums",
+                "yolocnn-attn": "a man is playing a drum set"
+            }
+        }
+    },
+    "3500147750.jpg": {
+        "flickr": {
+            "greedy": {
+                "vitcnn-attn": "a woman in a red shirt and blue jeans is sitting on a blue mat",
+                "cnn-rnn": "a man in a red shirt is jumping in the air",
+                "cnn-attn": "a woman in a red shirt and red pants is laying down on a hill",
+                "vit-attn": "a man and a woman are posing for a picture",
+                "yolocnn-attn": "a man in a black shirt and a woman in a black jacket are posing for a picture"
+            },
+            "beam": {
+                "vitcnn-attn": "a woman in a red shirt and blue jeans is sitting on the ground",
+                "cnn-rnn": "a man in a red shirt is jumping in the air",
+                "cnn-attn": "a woman in a red shirt and red jacket is sliding down a hill",
+                "vit-attn": "a man and a woman are posing for a picture",
+                "yolocnn-attn": "a man in a black jacket is juggling oranges"
+            }
+        }
+    },
+    "3019748495.jpg": {
+        "flickr": {
+            "greedy": {
+                "vitcnn-attn": "a man in a white shirt is sitting at a computer",
+                "cnn-rnn": "a man in a black shirt is sitting at a table with a computer screen",
+                "cnn-attn": "a man in a blue shirt is looking at a computer screen",
+                "vit-attn": "a man in a white shirt is working on a computer",
+                "yolocnn-attn": "a woman in a white shirt and black pants is sitting at a computer desk"
+            },
+            "beam": {
+                "vitcnn-attn": "a man is sitting at a computer",
+                "cnn-rnn": "a group of people are sitting at a table",
+                "cnn-attn": "a man and a woman are looking at a computer screen",
+                "vit-attn": "a man in a white shirt is working on a computer",
+                "yolocnn-attn": "a woman is sitting at a desk with a computer screen"
+            }
+        }
+    },
+    "544149309.jpg": {
+        "flickr": {
+            "greedy": {
+                "vitcnn-attn": "a man in a black shirt and jeans is standing on a roof",
+                "cnn-rnn": "a man in a blue shirt and shorts is standing on a sidewalk",
+                "cnn-attn": "a man in a yellow shirt is standing on a roof",
+                "vit-attn": "a man in a blue shirt and jeans is standing on a roof",
+                "yolocnn-attn": "a man in a red shirt and black pants is standing on a sidewalk"
+            },
+            "beam": {
+                "vitcnn-attn": "a man in a black shirt and jeans is standing on a roof",
+                "cnn-rnn": "a man in a blue shirt is standing in front of a building",
+                "cnn-attn": "a man in a yellow shirt is standing on a roof",
+                "vit-attn": "a man in a blue shirt and jeans is standing on a roof",
+                "yolocnn-attn": "a man in a red shirt is standing on a sidewalk"
+            }
+        }
+    },
+    "96395587.jpg": {
+        "flickr": {
+            "greedy": {
+                "vitcnn-attn": "a group of people are enjoying a meal",
+                "cnn-rnn": "a group of people are sitting at a table with a large glass of wine",
+                "cnn-attn": "a group of people are sitting at a table",
+                "vit-attn": "a group of people are sitting around a table",
+                "yolocnn-attn": "a group of people are sitting around a table"
+            },
+            "beam": {
+                "vitcnn-attn": "a group of people are sitting in a restaurant",
+                "cnn-rnn": "a group of people are sitting at a table",
+                "cnn-attn": "a group of people are sitting at a restaurant",
+                "vit-attn": "a group of people are sitting around a table",
+                "yolocnn-attn": "a group of people sitting around a table"
+            }
+        }
+    },
+    "2662570182.jpg": {
+        "flickr": {
+            "greedy": {
+                "vitcnn-attn": "a man in a blue shirt is sitting on a sidewalk",
+                "cnn-rnn": "a man in a blue shirt is sitting on a bench with his eyes closed",
+                "cnn-attn": "a man in a blue shirt is sitting on a bench",
+                "vit-attn": "a man and woman are walking down the street",
+                "yolocnn-attn": "a man in a blue shirt is sitting on a blue bench"
+            },
+            "beam": {
+                "vitcnn-attn": "a man in a blue shirt is sitting on the sidewalk",
+                "cnn-rnn": "a man and a woman are sitting on a bench",
+                "cnn-attn": "a man in a blue shirt is sitting on a bench",
+                "vit-attn": "a man in a black shirt and blue jeans is pulling a child on a scooter",
+                "yolocnn-attn": "a man and a woman are sitting on the ground"
+            }
+        }
+    },
+    "6221289833.jpg": {
+        "flickr": {
+            "greedy": {
+                "vitcnn-attn": "a young boy in a green shirt and white shorts is running in a field",
+                "cnn-rnn": "a man in a red shirt is kicking a soccer ball",
+                "cnn-attn": "a soccer player in a white uniform is about to kick a soccer ball",
+                "vit-attn": "a soccer player in a white uniform is kicking a soccer ball",
+                "yolocnn-attn": "a young girl in a white shirt and black shorts is playing soccer"
+            },
+            "beam": {
+                "vitcnn-attn": "a man in a white shirt and black shorts is playing soccer",
+                "cnn-rnn": "a man in a red shirt is kicking a soccer ball",
+                "cnn-attn": "a man in a white uniform kicking a soccer ball",
+                "vit-attn": "a soccer player in a white uniform is kicking a soccer ball",
+                "yolocnn-attn": "two men playing soccer"
+            }
+        }
+    }
+}

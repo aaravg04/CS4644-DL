@@ -1,0 +1,27 @@
+training:
+  # learning settings
+  learning_rate: 0.001
+  step_size: 5
+  gamma: 0.8
+  num_epochs: 100
+  eval_every: 10
+  # dataset settings
+  num_workers: 2
+  batch_size: 128
+  val_ratio: 0.1
+  test_ratio: 0.05
+  # model settings
+  model_arch: 'stacked' # 'cnn-rnn' or 'cnn-attn' or 'vitcnn-attn'
+  dataset: 'flickr' # 'mscoco' or 'flickr'
+  mode: 'image' # 'precomputed' or 'image'
+  beam_width: 4
+  # save and load checkpoints
+  save_model: true
+  load_model: false
+  save_every: 25
+  checkpoint_dir: '/home/hice1/agupta965/scratch/stacked/flickr/bs128_lr0.001_es512_nl4/checkpoint_epoch_100.pth.tar'
+# specify the model hyperparameters
+vitcnn_attn_model:
+  embed_size: 512
+  num_layers: 4
+  num_heads: 4

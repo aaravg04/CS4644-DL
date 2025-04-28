@@ -1,0 +1,15 @@
+{"time":"2025-04-20T21:15:17.393806107-04:00","level":"INFO","msg":"stream: starting","core version":"0.19.9","symlink path":"/home/hice1/agupta965/ondemand/CS4644-DL/src/image-captioning/wandb/run-20250420_211517-bdrbo2tc/logs/debug-core.log"}
+{"time":"2025-04-20T21:15:17.556687463-04:00","level":"INFO","msg":"created new stream","id":"bdrbo2tc"}
+{"time":"2025-04-20T21:15:17.556707242-04:00","level":"INFO","msg":"stream: started","id":"bdrbo2tc"}
+{"time":"2025-04-20T21:15:17.556901914-04:00","level":"INFO","msg":"handler: started","stream_id":"bdrbo2tc"}
+{"time":"2025-04-20T21:15:17.556913408-04:00","level":"INFO","msg":"writer: Do: started","stream_id":"bdrbo2tc"}
+{"time":"2025-04-20T21:15:17.557062499-04:00","level":"INFO","msg":"sender: started","stream_id":"bdrbo2tc"}
+{"time":"2025-04-20T21:15:17.692622897-04:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-04-20T21:15:17.962986925-04:00","level":"INFO","msg":"stream: closing","id":"bdrbo2tc"}
+{"time":"2025-04-20T21:15:17.962999626-04:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2025-04-20T21:15:17.96308949-04:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2025-04-20T21:15:18.488511479-04:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-04-20T21:15:18.564101284-04:00","level":"INFO","msg":"handler: closed","stream_id":"bdrbo2tc"}
+{"time":"2025-04-20T21:15:18.564112108-04:00","level":"INFO","msg":"writer: Close: closed","stream_id":"bdrbo2tc"}
+{"time":"2025-04-20T21:15:18.56421732-04:00","level":"INFO","msg":"sender: closed","stream_id":"bdrbo2tc"}
+{"time":"2025-04-20T21:15:18.564667158-04:00","level":"INFO","msg":"stream: closed","id":"bdrbo2tc"}

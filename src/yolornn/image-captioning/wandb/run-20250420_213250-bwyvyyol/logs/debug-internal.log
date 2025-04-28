@@ -1,0 +1,15 @@
+{"time":"2025-04-20T21:32:50.349174012-04:00","level":"INFO","msg":"stream: starting","core version":"0.19.9","symlink path":"/home/hice1/agupta965/ondemand/CS4644-DL/src/image-captioning/wandb/run-20250420_213250-bwyvyyol/logs/debug-core.log"}
+{"time":"2025-04-20T21:32:50.520437175-04:00","level":"INFO","msg":"created new stream","id":"bwyvyyol"}
+{"time":"2025-04-20T21:32:50.520458156-04:00","level":"INFO","msg":"stream: started","id":"bwyvyyol"}
+{"time":"2025-04-20T21:32:50.521202843-04:00","level":"INFO","msg":"handler: started","stream_id":"bwyvyyol"}
+{"time":"2025-04-20T21:32:50.521225248-04:00","level":"INFO","msg":"writer: Do: started","stream_id":"bwyvyyol"}
+{"time":"2025-04-20T21:32:50.521366783-04:00","level":"INFO","msg":"sender: started","stream_id":"bwyvyyol"}
+{"time":"2025-04-20T21:32:50.608946641-04:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-04-20T21:35:08.957006135-04:00","level":"INFO","msg":"stream: closing","id":"bwyvyyol"}
+{"time":"2025-04-20T21:35:08.957108564-04:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2025-04-20T21:35:08.957443495-04:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2025-04-20T21:35:09.311633352-04:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-04-20T21:35:09.417164975-04:00","level":"INFO","msg":"handler: closed","stream_id":"bwyvyyol"}
+{"time":"2025-04-20T21:35:09.417193081-04:00","level":"INFO","msg":"writer: Close: closed","stream_id":"bwyvyyol"}
+{"time":"2025-04-20T21:35:09.417326705-04:00","level":"INFO","msg":"sender: closed","stream_id":"bwyvyyol"}
+{"time":"2025-04-20T21:35:09.417956962-04:00","level":"INFO","msg":"stream: closed","id":"bwyvyyol"}

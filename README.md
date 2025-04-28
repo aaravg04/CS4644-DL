@@ -4,6 +4,6 @@
 Final project by,
 
 >*Aarav Gupta*: aaravgupta@gatech.edu\
->*Niti Mirkhelkar*: @gatech.edu\
+>*Niti Mirkhelkar*: nmirkhelkar6@gatech.edu\
 >*Shivam Singh*: @gatech.edu\
 >*Nityam Bhachawat*: @gatech.edu
